@@ -11,9 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TransactionTest {
-	
+
 	Transaction transaction;
-	
+
 	@Before
 	public void setUp() {
 		transaction = new Transaction();
@@ -25,16 +25,16 @@ public class TransactionTest {
 		Date date = new Date(2013, 01, 01);
 		String description = "This is a test string";
 		BigDecimal amount = new BigDecimal(123.45);
-	
+
 		transaction.setDate(date);
 		transaction.setDescription(description);
 		transaction.setAmount(amount);
-		
+
 		assertEquals(new Date(2013, 01, 01), transaction.getDate());
 		assertEquals("This is a test string", transaction.getDescription());
 		assertEquals("123.45", transaction.getAmount().toString());
 	}
-	
+
 	@Test
 	public void testAddNewStringTransaction() {
 		Transaction t = new Transaction("2013-01-01", "Test", "12.00");
@@ -50,10 +50,10 @@ public class TransactionTest {
 		assertEquals("12.00", t.getAmount().toString());
 		assertEquals("12.00", t.getAmountIn().toString());
 	}
-	
+
 	@Test
 	public void testTransactionHashFunction() {
-		Transaction t1 = new Transaction ("2013-01-01", "Test abc xyz", "123.00");
+		Transaction t1 = new Transaction("2013-01-01", "Test abc xyz", "123.00");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		try {
@@ -66,22 +66,23 @@ public class TransactionTest {
 		t2.setDate(date);
 		t2.setAmount(amount);
 		t2.setDescription("Test abc xyz");
-		
+
 		assertEquals(t1.getDate(), t2.getDate());
 		assertEquals(t1.getAmount(), t2.getAmount());
 		assertEquals(t1.getDescription(), t2.getDescription());
 		assertEquals("Hashcode Test", t1.hashCode(), t2.hashCode());
 		assertEquals(true, t1.equals(t2));
 		assertEquals(false, t1 == t2);
-		
+
 	}
-	
+
 	@Test
 	public void testTransactionEqualsMethod() {
-		Transaction t1 = new Transaction ("2013-01-01", "Test abc xyz", "123.00");
-		Transaction t2 = new Transaction ("2013-01-01", "Test abc xyz", "123.00");
-		Transaction t3 = new Transaction ("2013-01-01", "Test abc xyz ", "123.00");
-		Transaction t4 = new Transaction ();
+		Transaction t1 = new Transaction("2013-01-01", "Test abc xyz", "123.00");
+		Transaction t2 = new Transaction("2013-01-01", "Test abc xyz", "123.00");
+		Transaction t3 = new Transaction("2013-01-01", "Test abc xyz ",
+				"123.00");
+		Transaction t4 = new Transaction();
 		t4.setDescription(null);
 		Date d1 = null;
 		t4.setDate(d1);
@@ -94,19 +95,21 @@ public class TransactionTest {
 		assertEquals(false, t1.equals(null));
 		assertEquals(false, t4.equals(t1));
 	}
-	
+
 	@Test
 	public void testAmountPrecision() {
 		transaction.setAmount(new BigDecimal(123.4));
-		assertEquals(new BigDecimal(123.40).setScale(2, BigDecimal.ROUND_HALF_UP), transaction.getAmount());
+		assertEquals(
+				new BigDecimal(123.40).setScale(2, BigDecimal.ROUND_HALF_UP),
+				transaction.getAmount());
 	}
-	
+
 	@Test
 	public void testCorrectValueCategory() {
 		transaction.setAmount(new BigDecimal(-12.34));
 		assertEquals("12.34", transaction.getAmountOut().toString());
 	}
-	
+
 	@Test
 	public void testCorrectStringValueCategory() {
 		transaction.setAmount(new BigDecimal("-12.34"));

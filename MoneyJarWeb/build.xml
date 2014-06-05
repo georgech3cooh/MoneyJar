@@ -48,6 +48,7 @@
     
     <!-- test -->
     <target name="test" description="run unit tests" depends="compile">
+    	<echo message="running tests..." />
     	<junit haltonfailure="true">
     		<classpath refid="classpath" />
     		<formatter type="plain" /> <!-- to file -->
@@ -57,6 +58,7 @@
 		    		</fileset>
     			</batchtest>
     	</junit>
+    	<echo message="tests complete" />
     </target>
 	
     <!-- package -->

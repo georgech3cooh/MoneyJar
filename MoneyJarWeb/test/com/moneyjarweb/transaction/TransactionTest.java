@@ -110,7 +110,7 @@ public class TransactionTest {
 	@Test
 	public void testCorrectStringValueCategory() {
 		transaction.setAmount(new BigDecimal("-12.34"));
-		assertEquals("12.34", transaction.getAmountOut().toString());
+		assertEquals("12.345", transaction.getAmountOut().toString());
 	}
 
 }

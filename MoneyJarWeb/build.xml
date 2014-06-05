@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="MoneyJarWeb Project Build" default="dist"
+	xmlns:ivy="antlib:org.apache.ivy.ant">
+    
+    <!-- specify properties -->
+    <property name="src.dir" location="src" />
+    <property name="build.dir" location="build" />
+    <property name="lib.dir" location="lib" />
+    <property name="dist.dir" location="dist" />
+	
+	<property name="test.dir" location="test" />
+	<property name="test.reports" location="reports" />
+
+    <!-- specify classpath -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+        </fileset>
+    	<pathelement location="${build.dir}" />
+    </path>
+    
+    <!-- mkdir -->
+    <target name="mkdir" description="make directories needed for build">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${test.reports}" /> 
+    </target>
+    
+    <!-- clean -->
+	<target name="clean" description="clean previous build and distribution" >
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${test.reports}" />
+	</target>
+    
+	<!-- resolve dependencies -->
+	<target name="resolve" description="retrieve dependencies with ivy">
+		<ivy:retrieve />
+	</target>
+	
+    <!-- compile -->
+	<target name="compile" description="Compile source code" depends="clean,mkdir,resolve">
+		<javac srcdir="${src.dir}:${test.dir}" destdir="${build.dir}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+    
+    <!-- test -->
+    <target name="test" description="run unit tests" depends="compile">
+    	<junit haltonfailure="true">
+    		<classpath refid="classpath" />
+    		<formatter type="plain" /> <!-- to file -->
+	    		<batchtest todir="${test.reports}">
+		    		<fileset dir="${test.dir}">
+		    			<include name="**/*Test.java" />
+		    		</fileset>
+    			</batchtest>
+    	</junit>
+    </target>
+	
+    <!-- package -->
+	<target name="dist" description="create distribution" depends="test">
+		<echo message="Creating distribution" />
+	</target>
+    
+    <!-- upload -->
+    
+    
+</project>

@@ -51,7 +51,8 @@
     	<echo message="running tests..." />
     	<junit haltonfailure="true">
     		<classpath refid="classpath" />
-    		<formatter type="plain" /> <!-- to file -->
+    		<formatter type="plain" usefile="false" /> <!-- to file -->
+    		<formatter type="xml" /> <!-- generate xml reports -->
 	    		<batchtest todir="${test.reports}">
 		    		<fileset dir="${test.dir}">
 		    			<include name="**/*Test.java" />
@@ -59,6 +60,17 @@
     			</batchtest>
     	</junit>
     	<echo message="tests complete" />
+    	
+    	<!-- generate html test reports -->
+    	<echo message="generating reports"/>
+    	<junitreport todir="${test.reports}">
+    		<fileset dir="${test.reports}">
+    			<include name="**/TEST*.xml" />
+    		</fileset>
+    		<report format="frames" todir="${test.reports}" />
+    	</junitreport>
+    	
+    	
     </target>
 	
     <!-- package -->

@@ -8,7 +8,7 @@
     <property name="build.dir" location="build" />
     <property name="lib.dir" location="lib" />
     <property name="dist.dir" location="dist" />
-	
+	<property name="webapps.dir" location="webapps" />
 	<property name="test.dir" location="test" />
 	<property name="test.reports" location="reports" />
 
@@ -73,12 +73,29 @@
     	
     </target>
 	
-    <!-- package -->
+    <!-- package application into war file -->
 	<target name="dist" description="create distribution" depends="test">
 		<echo message="Creating distribution" />
+		<war destfile="${dist.dir}/moneyjar.war" needxmlfile="false">
+			<fileset dir="WebContent" >
+				<include name="**/*.*" />
+			</fileset>
+			<lib dir="${lib.dir}" />
+			<classes dir="${build.dir}" />			
+		</war>
 	</target>
     
-    <!-- upload -->
-    
+	<!-- check if the webapps directory exists on the system -->
+	<target name="check-webapps-dir">
+		<available file="${webapps.dir}" type="dir" property="webapps.present" />
+		<echo message="Checking if 'webapps' directory exists: ${webapps.present}" />
+	</target>
+	
+    <!-- upload/move war file to webapps directory on application server -->
+	<target name="upload" description="move the distribution file to the application server"
+		depends="dist, check-webapps-dir" if="webapps.present">
+			<echo message="moving war file to webapps directory" />
+			<move file="${dist.dir}/moneyjar.war" todir="${webapps.dir}" />
+	</target>
     
 </project>

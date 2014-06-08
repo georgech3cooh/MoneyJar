@@ -8,7 +8,7 @@
     <property name="build.dir" location="build" />
     <property name="lib.dir" location="lib" />
     <property name="dist.dir" location="dist" />
-	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-7.0.47/webapps" />
+	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.0-RC5/webapps" />
 	<property name="test.dir" location="test" />
 	<property name="test.reports" location="reports" />
 

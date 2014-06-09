@@ -1,7 +1,7 @@
 <ivy-module version="2.4">
     <info organisation="khominhvi" module="moneyjar" />
     <dependencies>
-	    <dependency org="org.apache.tomcat" name="tomcat-catalina" rev="7.0.54"/>
+	    <dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="8.0.0-RC5"/>
 	    <dependency org="junit" name="junit" rev="4.11"/>
     </dependencies>
 </ivy-module>

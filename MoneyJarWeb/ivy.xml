@@ -2,6 +2,7 @@
     <info organisation="khominhvi" module="moneyjar" />
     <dependencies>
 	    <dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="8.0.0-RC5"/>
+	    <dependency org="org.hibernate" name="hibernate-core" rev="4.3.5.Final"/>
 	    <dependency org="junit" name="junit" rev="4.11"/>
     </dependencies>
 </ivy-module>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<project name="MoneyJarWeb Project Build" default="dist"
+<project name="MoneyJarWeb Project Build" default="upload"
 	xmlns:ivy="antlib:org.apache.ivy.ant">
     
     <!-- specify properties -->

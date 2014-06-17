@@ -7,6 +7,6 @@ import com.moneyjarweb.transaction.Transaction;
 
 public interface StatementParser {
 
-	public List<Transaction> parseStatement(File statement);
+	public List<Transaction> parseStatement(File statement) throws Exception;
 	
 }

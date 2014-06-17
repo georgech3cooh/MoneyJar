@@ -11,7 +11,7 @@ public class StatementImporter {
 
 	public StatementImporter() {}
 	
-	public void StatementImport(File statement) {
+	public void statementImport(File statement) throws Exception {
 		
 		this.statement = statement;
 		
@@ -29,7 +29,7 @@ public class StatementImporter {
 		
 		// 3. Parse file to transactions
 		List<Transaction> transactions = parser.parseStatement(statement);
-		
+	
 		// 4. Commit transactions to database
 		
 	}

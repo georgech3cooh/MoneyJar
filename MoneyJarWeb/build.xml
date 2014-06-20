@@ -11,6 +11,7 @@
 	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.0-RC5/webapps" />
 	<property name="test.dir" location="test" />
 	<property name="test.reports" location="reports" />
+	<property name="properties.dir" location="properties" />
 
     <!-- specify classpath -->
     <path id="classpath">
@@ -81,7 +82,11 @@
 				<include name="**/*.*" />
 			</fileset>
 			<lib dir="${lib.dir}" />
-			<classes dir="${build.dir}" />			
+			<classes dir="${build.dir}" />
+			
+			<!-- Add log4j configuration file to WEB-INF/classes directory -->
+			<classes file="${properties.dir}/log4j.xml" />
+			
 		</war>
 	</target>
     

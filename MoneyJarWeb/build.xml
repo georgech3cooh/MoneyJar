@@ -19,6 +19,10 @@
 			<include name="*.jar" />
     	</fileset>
     	<pathelement location="${build.dir}" />
+    	
+    	<!-- needed for junit to access log4j configuration file -->
+    	<pathelement location="${properties.dir}" />
+    	
     </path>
     
     <!-- mkdir -->

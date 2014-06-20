@@ -6,5 +6,6 @@
 	    <dependency org="mysql" name="mysql-connector-java" rev="5.1.31"/>
 	    <dependency org="junit" name="junit" rev="4.11"/>
 	    <dependency org="net.sf.opencsv" name="opencsv" rev="2.3"/>
+	    <dependency org="log4j" name="log4j" rev="1.2.16"/>
     </dependencies>
 </ivy-module>

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import au.com.bytecode.opencsv.CSVReader;
 
 import com.moneyjarweb.transaction.Transaction;
@@ -14,6 +16,11 @@ import com.moneyjarweb.transaction.Transaction;
 public class CSVParser implements StatementParser {
 
 	private CSVReader csvReader;
+	private Logger logger;
+	
+	public CSVParser () {
+		logger = Logger.getLogger(CSVParser.class);
+	}
 
 	@Override
 	public List<Transaction> parseStatement(File statement) throws Exception {
@@ -61,22 +68,24 @@ public class CSVParser implements StatementParser {
 				transactions.add(nextLine);
 			}
 		} catch (FileNotFoundException e) {
-			throw new Exception("The file \"" + 
-								statement.getPath() + 
-								"\" could not be found, " +  
-								"please check that the file exists.", e);
+			String errorMsg = "The file \"" + statement.getPath() + 
+					"\" could not be found, please check that the file exists.";
+			logger.warn(errorMsg, e);
+			throw new Exception(errorMsg, e);
 			
 		} catch (IOException e) {
-			throw new Exception("Problem reading the file. " + 
-								"The file may be corrupted.", e);
+			String errorMsg = "Problem reading the file. The file may be corrupted.";
+			logger.error(errorMsg, e);
+			throw new Exception(errorMsg, e);
 			
 		} finally {
 			try {
 				if (csvReader != null)
 					csvReader.close();
 			} catch (IOException e) {
-				throw new Exception("Problem closing the file, " + 
-									"the file may be corrupted.", e);
+				String errorMsg = "Problem closing the file, the file may be corrupted.";
+				logger.error(errorMsg, e);
+				throw new Exception(errorMsg, e);
 			}
 		}
 		return transactions;

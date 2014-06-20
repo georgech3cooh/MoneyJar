@@ -15,8 +15,8 @@
     <!-- specify classpath -->
     <path id="classpath">
         <fileset dir="${lib.dir}">
-            <include name="**/*.jar" />
-        </fileset>
+			<include name="*.jar" />
+    	</fileset>
     	<pathelement location="${build.dir}" />
     </path>
     
@@ -41,7 +41,7 @@
 	
     <!-- compile -->
 	<target name="compile" description="Compile source code" depends="clean,mkdir,resolve">
-		<javac srcdir="${src.dir}:${test.dir}" destdir="${build.dir}">
+		<javac target="1.7" srcdir="${src.dir}:${test.dir}" destdir="${build.dir}" includeantruntime="false">
 			<classpath refid="classpath" />
 		</javac>
 	</target>

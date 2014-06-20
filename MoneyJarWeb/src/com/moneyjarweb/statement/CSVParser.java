@@ -70,7 +70,7 @@ public class CSVParser implements StatementParser {
 		} catch (FileNotFoundException e) {
 			String errorMsg = "The file \"" + statement.getPath() + 
 					"\" could not be found, please check that the file exists.";
-			logger.warn(errorMsg, e);
+			logger.warn(errorMsg);
 			throw new Exception(errorMsg, e);
 			
 		} catch (IOException e) {

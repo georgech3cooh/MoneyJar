@@ -5,24 +5,42 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 public class Transaction {
 
+	private long id;
 	private Date date;
 	private String description;
 	private BigDecimal amount;
-	private BigDecimal amountIn;
-	private BigDecimal amountOut;
+	private Logger logger;
 	
 	public Transaction(){
+		logger = Logger.getLogger(Transaction.class);
 		this.description = "";
 		this.date = new Date();
 		this.amount = new BigDecimal("0.00");
 	}
 	
 	public Transaction(String date, String desc, String amount) {
+		
+		logger = Logger.getLogger(Transaction.class);
+		logger.debug(">> Transaction() - Creating object: " 
+				+ date + ", " + desc + ", " + amount);
+		
 		setDate(date);
 		this.description = desc;
 		setAmount(amount);
+		
+		logger.debug("<< Transaction() - Transaction object created");
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	public Date getDate() {
@@ -38,8 +56,10 @@ public class Transaction {
 		Date pdate = null;
 		try {
 			pdate = sdf.parse(date);
-		} catch (ParseException e) { }
-
+		} catch (ParseException e) { 
+			logger.error(">> setDate() -  could not parse date string", e);
+		}
+		
 		this.date = pdate;		
 	}
 
@@ -55,51 +75,25 @@ public class Transaction {
 		return amount;
 	}
 	
-	public BigDecimal getAmountIn() {
-			return amountIn;
-	}
-	
-	public BigDecimal getAmountOut() {
-		if (amountOut != null){
-			return amountOut.abs();
-		} else {
-			return null;
-		}
-	}
-	
 	public void setAmount(BigDecimal amount) {
 		BigDecimal temp = amount.setScale(2, BigDecimal.ROUND_HALF_UP);
-		categorizeValue(temp);
 		this.amount = temp;
-		
 	}
 	
 	public void setAmount(String amount) {
 		BigDecimal temp = new BigDecimal(amount); 
-		categorizeValue(temp);
 		this.amount = temp;
 	}
-	
-	public void categorizeValue(BigDecimal amount) {
-		if (amount.compareTo(new BigDecimal("0.00")) <= 0) {
-			this.amountOut = amount;
-		} else {
-			this.amountIn = amount;
-		}
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
-		result = prime * result
-				+ ((amountIn == null) ? 0 : amountIn.hashCode());
-		result = prime * result
-				+ ((amountOut == null) ? 0 : amountOut.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -117,16 +111,6 @@ public class Transaction {
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
-		if (amountIn == null) {
-			if (other.amountIn != null)
-				return false;
-		} else if (!amountIn.equals(other.amountIn))
-			return false;
-		if (amountOut == null) {
-			if (other.amountOut != null)
-				return false;
-		} else if (!amountOut.equals(other.amountOut))
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -137,10 +121,10 @@ public class Transaction {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (id != other.id)
+			return false;
 		return true;
 	}
-
-
 
 	
 }

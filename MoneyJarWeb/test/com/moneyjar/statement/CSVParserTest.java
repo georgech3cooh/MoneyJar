@@ -3,7 +3,6 @@ package com.moneyjar.statement;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.junit.Before;
@@ -25,7 +24,7 @@ public class CSVParserTest {
 		csvTestFileWithValidData = new File("testfile.csv");
 		nonExistentFile = new File("nonExistentFile.csv");
 	}
-	
+
 	@Test
 	public void testParseStatementWithValidCSV(){
 		try {

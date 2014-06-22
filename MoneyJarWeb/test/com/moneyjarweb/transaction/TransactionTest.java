@@ -48,7 +48,6 @@ public class TransactionTest {
 		assertEquals(date, t.getDate());
 		assertEquals("Test", t.getDescription());
 		assertEquals("12.00", t.getAmount().toString());
-		assertEquals("12.00", t.getAmountIn().toString());
 	}
 
 	@Test
@@ -102,18 +101,6 @@ public class TransactionTest {
 		assertEquals(
 				new BigDecimal(123.40).setScale(2, BigDecimal.ROUND_HALF_UP),
 				transaction.getAmount());
-	}
-
-	@Test
-	public void testCorrectValueCategory() {
-		transaction.setAmount(new BigDecimal(-12.34));
-		assertEquals("12.34", transaction.getAmountOut().toString());
-	}
-
-	@Test
-	public void testCorrectStringValueCategory() {
-		transaction.setAmount(new BigDecimal("-12.34"));
-		assertEquals("12.34", transaction.getAmountOut().toString());
 	}
 
 }

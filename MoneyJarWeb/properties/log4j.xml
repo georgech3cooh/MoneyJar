@@ -6,14 +6,14 @@
 		<param name="threshold" value="error" />
 		<param name="file" value="error.log" />
 		<layout class="org.apache.log4j.PatternLayout"> 
-       		<param name="ConversionPattern" value="%d [%-5p] %c - %m%n"/> 
+       		<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%-5p] %c{1} %m%n"/> 
       	</layout> 
 	</appender>
 	
 	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
-		<param name="threshold" value="info" />
+		<param name="threshold" value="trace" />
 		<layout class="org.apache.log4j.PatternLayout"> 
-       		<param name="ConversionPattern" value="%d [%-5p] %c - %m%n"/> 
+       		<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%-5p] %c{1} %m%n"/> 
       	</layout> 
 	</appender>
 	

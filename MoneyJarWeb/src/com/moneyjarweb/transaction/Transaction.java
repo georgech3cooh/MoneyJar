@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -17,7 +16,6 @@ import javax.persistence.Transient;
 import org.apache.log4j.Logger;
 
 @Entity
-@Table(name="transaction_test")
 public class Transaction {
 
 	private long id;

@@ -44,6 +44,7 @@ public class TransactionDAO {
 		logger.debug("<< create()");
 	}
 
+	@SuppressWarnings("rawtypes")
 	public List<Transaction> getDateRange(Date fromDate, Date toDate) {
 
 		logger.debug(">> getDateRange() - from '" + fromDate + "' to '"

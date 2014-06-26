@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${requestScope.message}
+${requestScope.status}
 
 </body>
 </html>

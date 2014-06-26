@@ -5,14 +5,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import org.apache.log4j.Logger;
 
+@Entity
+@Table(name="transaction_test")
 public class Transaction {
 
 	private long id;
 	private Date date;
 	private String description;
 	private BigDecimal amount;
+	
+	@Transient
 	private Logger logger;
 	
 	public Transaction(){
@@ -35,6 +48,8 @@ public class Transaction {
 		logger.debug("<< Transaction() - Transaction object created");
 	}
 	
+	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -43,6 +58,8 @@ public class Transaction {
 		this.id = id;
 	}
 	
+	@Temporal(value=TemporalType.DATE)
+	@Column(name="transaction_date")
 	public Date getDate() {
 		return date;
 	}
@@ -71,6 +88,7 @@ public class Transaction {
 		this.description = description;
 	}
 	
+	@Column(precision=8, scale=2)
 	public BigDecimal getAmount() {
 		return amount;
 	}

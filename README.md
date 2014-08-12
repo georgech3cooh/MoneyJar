@@ -31,6 +31,9 @@ The reports will:
 What is the purpose of the project?
 ===================================
 
-This is a private project to help me learn more about software development. 
-It is not licensed for distribution. 
+This is a personal pet project to help me learn about software development, particularly
+web-based applications.
 
+This project is open-source, although I have not included any licence details. 
+Feel free to fork this project, but in its current state it wouldn't be particularly 
+useful or productive to do so!

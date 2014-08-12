@@ -11,8 +11,8 @@ For information regarding the history of the project please visit my personal bl
 http://www.khominhvi.com
 
 
-What is money jar?
-===================
+What is Money Jar?
+==================
 
 Money jar is or will be a web-based personal money management application, that analyzes 
 your personal financial history and produces graphical reports to show you how well you 

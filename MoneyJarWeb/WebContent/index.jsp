@@ -12,7 +12,5 @@ Hello World!
 5. Create rudimentary upload page.
 </div>
 
-
-
 </body>
 </html>

@@ -9,6 +9,7 @@ import java.util.List;
 
 import au.com.bytecode.opencsv.CSVReader;
 
+import com.moneyjarweb.statement.StatementParser;
 import com.moneyjarweb.transaction.Transaction;
 
 public class CSVParser implements StatementParser {

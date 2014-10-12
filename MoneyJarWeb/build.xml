@@ -11,13 +11,18 @@
 	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.0-RC5/webapps" />
 	<property name="test.dir" location="test" />
 	<property name="test.reports" location="reports" />
+	<property name="properties.dir" location="properties" />
 
     <!-- specify classpath -->
     <path id="classpath">
         <fileset dir="${lib.dir}">
-            <include name="**/*.jar" />
-        </fileset>
+			<include name="*.jar" />
+    	</fileset>
     	<pathelement location="${build.dir}" />
+    	
+    	<!-- needed for junit to access log4j configuration file -->
+    	<pathelement location="${properties.dir}" />
+    	
     </path>
     
     <!-- mkdir -->
@@ -41,7 +46,7 @@
 	
     <!-- compile -->
 	<target name="compile" description="Compile source code" depends="clean,mkdir,resolve">
-		<javac srcdir="${src.dir}:${test.dir}" destdir="${build.dir}">
+		<javac target="1.7" srcdir="${src.dir}:${test.dir}" destdir="${build.dir}" includeantruntime="false">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
@@ -81,7 +86,11 @@
 				<include name="**/*.*" />
 			</fileset>
 			<lib dir="${lib.dir}" />
-			<classes dir="${build.dir}" />			
+			<classes dir="${build.dir}" />
+			
+			<!-- Add log4j configuration file to WEB-INF/classes directory -->
+			<classes file="${properties.dir}/log4j.xml" />
+			
 		</war>
 	</target>
     

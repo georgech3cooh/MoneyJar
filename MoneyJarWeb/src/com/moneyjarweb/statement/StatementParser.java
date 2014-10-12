@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.moneyjarweb.statement;
 
 import java.io.File;
 import java.util.List;

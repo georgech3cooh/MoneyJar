@@ -1,11 +1,4 @@
 /build/
-<<<<<<< HEAD
 /dist/
-/lib/
 /reports/
-=======
-/dist
-/lib
-/reports
 /error.log
->>>>>>> branch 'master' of git@github.com:khominhvi/MoneyJarWeb.git

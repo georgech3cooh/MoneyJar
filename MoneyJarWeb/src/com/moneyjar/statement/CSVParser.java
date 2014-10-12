@@ -41,42 +41,40 @@ public class CSVParser implements StatementParser {
 				transaction.setAmount(column[2]);
 				transactions.add(transaction);
 			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new Exception(
-							"Could not parse CSV data, " + 
-							"file format may not be supported.", e);
+				throw new Exception("Could not parse CSV data, "
+						+ "file format may not be supported.", e);
 			}
 		}
-		
+
 		return transactions;
 	}
 
 	private ArrayList<String[]> readCSV(File statement) throws Exception {
-		
+
 		ArrayList<String[]> transactions = new ArrayList<String[]>();
 		String[] nextLine;
-		
+
 		try {
 			csvReader = new CSVReader(new FileReader(statement));
 			while ((nextLine = csvReader.readNext()) != null) {
 				transactions.add(nextLine);
 			}
 		} catch (FileNotFoundException e) {
-			throw new Exception("The file \"" + 
-								statement.getPath() + 
-								"\" could not be found, " +  
-								"please check that the file exists.", e);
-			
+			throw new Exception("The file \"" + statement.getPath()
+					+ "\" could not be found, "
+					+ "please check that the file exists.", e);
+
 		} catch (IOException e) {
-			throw new Exception("Problem reading the file. " + 
-								"The file may be corrupted.", e);
-			
+			throw new Exception("Problem reading the file. "
+					+ "The file may be corrupted.", e);
+
 		} finally {
 			try {
 				if (csvReader != null)
 					csvReader.close();
 			} catch (IOException e) {
-				throw new Exception("Problem closing the file, " + 
-									"the file may be corrupted.", e);
+				throw new Exception("Problem closing the file, "
+						+ "the file may be corrupted.", e);
 			}
 		}
 		return transactions;

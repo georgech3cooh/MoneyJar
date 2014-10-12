@@ -11,19 +11,19 @@ import org.junit.Test;
 import com.moneyjarweb.transaction.Transaction;
 
 public class CSVParserTest {
-	
+
 	private File csvTestFileWithValidData;
 	private CSVParser csvParser;
 	List<Transaction> transactions;
-	
+
 	@Before
-	public void setUp(){
+	public void setUp() {
 		csvParser = new CSVParser();
 		csvTestFileWithValidData = new File("testfile.csv");
 	}
-	
+
 	@Test
-	public void testParseStatementWithValidCSV(){
+	public void testParseStatementWithValidCSV() {
 		try {
 			transactions = csvParser.parseStatement(csvTestFileWithValidData);
 		} catch (Exception e) {
@@ -31,7 +31,8 @@ public class CSVParserTest {
 			e.printStackTrace();
 		}
 		assertEquals("Size of list", 3, transactions.size());
-		assertEquals("Description of transaction", "test string 2", transactions.get(1).getDescription());
+		assertEquals("Description of transaction", "test string 2",
+				transactions.get(1).getDescription());
 	}
 
 }

@@ -37,7 +37,7 @@ public class UploadServlet extends HttpServlet {
             fileSaveDir.mkdirs();
         }
         
-        System.out.println("Upload File Directory="+fileSaveDir.getAbsolutePath());
+        System.out.println("Upload File Directory=" + fileSaveDir.getAbsolutePath());
         
         String fileName = null;
         //Get all the parts from request and write it to the file on server

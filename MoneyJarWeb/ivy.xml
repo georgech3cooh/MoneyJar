@@ -1,7 +1,9 @@
 <ivy-module version="2.4">
     <info organisation="khominhvi" module="moneyjar" />
     <dependencies>
-		<dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="8.0.0-RC5"/>
+		<!-- removed: causing conflict with runtime server
+		    <dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="8.0.0-RC5"/>
+	    -->
 	    <dependency org="org.hibernate" name="hibernate-core" rev="4.3.5.Final"/>
 	    <dependency org="mysql" name="mysql-connector-java" rev="5.1.31"/>
 	    <dependency org="junit" name="junit" rev="4.11"/>

@@ -10,7 +10,6 @@ Hello World!
 3. Create rudimentary date picker div.
 4. Create rudimentary transaction table.
 5. Create rudimentary upload page.
-
 </div>
 
 

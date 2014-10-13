@@ -4,13 +4,20 @@
 Hello World!
 <br>
 
-<div name="todo">
-1. Write up dirty landing page
-2. Create rudimentary navigation div.
-3. Create rudimentary date picker div.
-4. Create rudimentary transaction table.
-5. Create rudimentary upload page.
+<div id="todo">
+<ol>
+    <li>Write up dirty landing page</li>
+    <li>Create rudimentary navigation div.</li>
+    <li>Create rudimentary date picker div.</li>
+    <li>Create rudimentary transaction table.</li>
+    <li>Create rudimentary upload page.</li>
+</ol>
 </div>
 
+<div id="navigation">
+<ul>
+	<li><a href="upload.jsp">Upload File</a></li>
+</ul>
+</div>
 </body>
 </html>

@@ -57,7 +57,7 @@ public class Transaction {
 	}
 	
 	@Temporal(value=TemporalType.DATE)
-	@Column(name="transaction_date")
+	//@Column(name="date")
 	public Date getDate() {
 		return date;
 	}

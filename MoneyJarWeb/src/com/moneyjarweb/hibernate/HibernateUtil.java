@@ -22,6 +22,7 @@ public class HibernateUtil {
 		 	logger.debug("-- session factory created");
 		} catch (Throwable t) {
 			logger.error("Hibernate exception:", t);
+			t.printStackTrace();
 			throw new ExceptionInInitializerError();
 		}
 	}

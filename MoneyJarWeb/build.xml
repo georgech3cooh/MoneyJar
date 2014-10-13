@@ -8,7 +8,7 @@
     <property name="build.dir" location="build" />
     <property name="lib.dir" location="lib" />
     <property name="dist.dir" location="dist" />
-	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.0-RC5/webapps" />
+	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.14/webapps" />
 	<property name="test.dir" location="test" />
 	<property name="test.reports" location="reports" />
 	<property name="properties.dir" location="properties" />
@@ -85,12 +85,20 @@
 			<fileset dir="WebContent" >
 				<include name="**/*.*" />
 			</fileset>
-			<lib dir="${lib.dir}" />
+			<lib dir="${lib.dir}" >
+				<exclude name="**/*servlet-api*.jar"/>
+			</lib>
 			<classes dir="${build.dir}" />
 			
-			<!-- Add log4j configuration file to WEB-INF/classes directory -->
+			<!-- Add log4j configuration file to WEB-INF/classes directory 
 			<classes file="${properties.dir}/log4j.xml" />
+			-->
 			
+			<!-- Add configuration files to WEB-INF/classes directory -->
+			<classes dir="${properties.dir}" >
+				<include name="*.xml" />
+			</classes>
+				
 		</war>
 	</target>
     

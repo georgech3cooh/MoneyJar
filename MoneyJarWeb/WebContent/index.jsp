@@ -12,7 +12,7 @@ Hello World!
     <li class="strikethrough">Create rudimentary navigation div.</li>
     <li>Create rudimentary date picker div.</li>
     <li>Create rudimentary transaction table.</li>
-    <li>Create rudimentary upload page.</li>
+    <li class="strikethrough">Create rudimentary upload page.</li>
 </ol>
 </div>
 

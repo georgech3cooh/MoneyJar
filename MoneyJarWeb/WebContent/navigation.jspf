@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+    pageEncoding="US-ASCII"%>
+    
+<div id="navigation">
+    <ul>
+    	<li><a href="index.jsp">Home</a></li>
+    	<li><a href="upload.jsp">Upload</a></li>
+    </ul>
+</div>

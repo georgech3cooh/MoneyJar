@@ -9,5 +9,7 @@
 <body>
 ${requestScope.status}
 
+<%@ include file="navigation.jspf" %>
+
 </body>
 </html>

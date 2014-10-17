@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="MoneyJarWeb Project Build" default="upload"
+	xmlns:ivy="antlib:org.apache.ivy.ant">
+    
+    <!-- specify properties -->
+    <property name="src.dir" location="src/main/java" />
+    <property name="build.dir" location="build" />
+    <property name="lib.dir" location="lib" />
+    <property name="dist.dir" location="dist" />
+	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.14/webapps" />
+	<property name="test.dir" location="src/test/java" />
+	<property name="test.reports" location="reports" />
+	<property name="properties.dir" location="properties" />
+
+    <!-- specify classpath -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+			<include name="*.jar" />
+    	</fileset>
+    	<pathelement location="${build.dir}" />
+    	
+    	<!-- needed for junit to access log4j configuration file -->
+    	<pathelement location="${properties.dir}" />
+    	
+    </path>
+    
+    <!-- mkdir -->
+    <target name="mkdir" description="make directories needed for build">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${test.reports}" /> 
+    </target>
+    
+    <!-- clean -->
+	<target name="clean" description="clean previous build and distribution" >
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${test.reports}" />
+	</target>
+    
+	<!-- resolve dependencies -->
+	<target name="resolve" description="retrieve dependencies with ivy">
+		<ivy:retrieve />
+	</target>
+	
+    <!-- compile -->
+	<target name="compile" description="Compile source code" depends="clean,mkdir,resolve">
+		<javac target="1.7" srcdir="${src.dir}:${test.dir}" destdir="${build.dir}" includeantruntime="false">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+    
+    <!-- test -->
+    <target name="test" description="run unit tests" depends="compile">
+    	<echo message="running tests..." />
+    	<junit haltonfailure="true">
+    		<classpath refid="classpath" />
+    		<formatter type="plain" usefile="false" /> <!-- to file -->
+    		<formatter type="xml" /> <!-- generate xml reports -->
+	    		<batchtest todir="${test.reports}">
+		    		<fileset dir="${test.dir}">
+		    			<include name="**/*Test.java" />
+		    		</fileset>
+    			</batchtest>
+    	</junit>
+    	<echo message="tests complete" />
+    	
+    	<!-- generate html test reports -->
+    	<echo message="generating reports"/>
+    	<junitreport todir="${test.reports}">
+    		<fileset dir="${test.reports}">
+    			<include name="**/TEST*.xml" />
+    		</fileset>
+    		<report format="frames" todir="${test.reports}" />
+    	</junitreport>
+    	
+    	
+    </target>
+	
+    <!-- package application into war file -->
+	<target name="dist" description="create distribution" depends="test">
+		<echo message="Creating distribution" />
+		<war destfile="${dist.dir}/moneyjar.war" needxmlfile="false">
+			<fileset dir="WebContent" >
+				<include name="**/*.*" />
+			</fileset>
+			<lib dir="${lib.dir}" >
+				<exclude name="**/*servlet-api*.jar"/>
+			</lib>
+			<classes dir="${build.dir}" />
+			
+			<!-- Add log4j configuration file to WEB-INF/classes directory 
+			<classes file="${properties.dir}/log4j.xml" />
+			-->
+			
+			<!-- Add configuration files to WEB-INF/classes directory -->
+			<classes dir="${properties.dir}" >
+				<include name="*.xml" />
+			</classes>
+				
+		</war>
+	</target>
+    
+	<!-- check if the webapps directory exists on the system -->
+	<target name="check-webapps-dir">
+		<available file="${webapps.dir}" type="dir" property="webapps.present" />
+		<echo message="Checking if 'webapps' directory exists: ${webapps.present}" />
+	</target>
+	
+    <!-- upload/move war file to webapps directory on application server -->
+	<target name="upload" description="move the distribution file to the application server"
+		depends="dist, check-webapps-dir" if="webapps.present">
+			<echo message="moving war file to webapps directory" />
+			<move file="${dist.dir}/moneyjar.war" todir="${webapps.dir}" />
+	</target>
+    
+</project>

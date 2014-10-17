@@ -10,7 +10,8 @@ import com.moneyjar.transaction.Transaction;
 public class StatementImporter {
 
 	private Logger logger = Logger.getLogger(StatementImporter.class);
-
+	private TransactionDAO tdao;
+	
 	public void importStatement(File statement) throws Exception {
 		logger.debug(">> statementImport()");
 		logger.info("-- statementImport() -- Importing file:"
@@ -25,7 +26,7 @@ public class StatementImporter {
 		}
 
 		if (transactions != null) {
-			TransactionDAO tdao = new TransactionDAO();
+		tdao = new TransactionDAO();
 			tdao.create(transactions);
 		}
 	}
@@ -51,7 +52,7 @@ public class StatementImporter {
 
 		// Can be replaced with factory pattern as new parsers are added to
 		// project
-		StatementParser parser = null;
+		StatementParser parser = null;	
 		if (fileExtension.equals("csv")) {
 			parser = new CSVParser();
 		} else {
@@ -61,6 +62,10 @@ public class StatementImporter {
 
 		logger.debug("<< getParser() -- returning parser: " + parser.getClass());
 		return parser;
+	}
+
+	public void setTdao(TransactionDAO tdao) {
+		this.tdao = tdao;
 	}
 
 }

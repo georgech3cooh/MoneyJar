@@ -11,7 +11,7 @@ public class StatementImporter {
 
 	private Logger logger = Logger.getLogger(StatementImporter.class);
 
-	public void statementImport(File statement) throws Exception {
+	public void importStatement(File statement) throws Exception {
 		logger.debug(">> statementImport()");
 		logger.info("-- statementImport() -- Importing file:"
 				+ statement.getName());

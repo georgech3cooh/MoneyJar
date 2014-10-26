@@ -3,20 +3,20 @@ package com.moneyjar.statement;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import java.io.File;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.moneyjar.transaction.Transaction;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -53,13 +53,13 @@ public class StatementImporterTest {
 	
 	@Test
 	public void testImportStatement() throws Exception {
-		doNothing().when(tdao).create(any(List.class));
+		doNothing().when(tdao).create(anyListOf(Transaction.class));
 		MockitoAnnotations.initMocks(tdao);	
 		
 		statementImporter.setTdao(tdao);
 		statementImporter.importStatement(testFile);
 		
-		verify(tdao).create(any(List.class));
+		verify(tdao).create(anyListOf(Transaction.class));
 	}
 	
 }

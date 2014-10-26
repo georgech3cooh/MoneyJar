@@ -20,14 +20,10 @@ public class StatementImporter {
 		String fileExtension = getFileExtension(statement);
 		StatementParser parser = getParser(fileExtension);
 
-		List<Transaction> transactions = null;
-		if (parser != null) {
-			transactions = parser.parseStatement(statement);
-		}
+		List<Transaction> transactionsFromStatement  = parser.parseStatement(statement);
 
-		if (transactions != null) {
-		tdao = new TransactionDAO();
-			tdao.create(transactions);
+		if (transactionsFromStatement != null) {
+			tdao.create(transactionsFromStatement);
 		}
 	}
 

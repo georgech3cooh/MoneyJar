@@ -54,7 +54,6 @@ public class StatementImporterTest {
 	@Test
 	public void testImportStatement() throws Exception {
 		doNothing().when(tdao).create(anyListOf(Transaction.class));
-		MockitoAnnotations.initMocks(tdao);	
 		
 		statementImporter.setTdao(tdao);
 		statementImporter.importStatement(testFile);

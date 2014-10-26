@@ -45,13 +45,11 @@ public class DuplicateManagerTest {
 
 	@Test
 	public void testGetOverlappingTransactions() {
-	List<Transaction> overlappingTs;
 		when(tdao.getDateRange(any(Date.class), any(Date.class))).thenReturn(new ArrayList<Transaction>());
 		duplicateManager.setTransactionDao(tdao);
+		@SuppressWarnings("unused")
 		List<Transaction> results = duplicateManager.getOverlappingTransactions(transactionsList);
-		// What am I trying to achieve?
 		// Verifies that tdao method is called to retrieve transactions.
-		// Not very interesting...
 		verify(tdao).getDateRange(any(Date.class), any(Date.class));
 	}
 	

@@ -11,7 +11,8 @@ import com.moneyjar.transaction.Transaction;
 public class DuplicateManager {
 
 	private List<Transaction> duplicates = null;
-	private List<Transaction> originals = null;
+	private List<Transaction> unique = null;
+	private TransactionDAO tdao;
 
 	Logger logger = Logger.getLogger(DuplicateManager.class);
 
@@ -35,7 +36,7 @@ public class DuplicateManager {
 	 *  Retrieves transactions that fall within the same date range as 
 	 *  comparison list. 
 	 */
-	private List<Transaction> getOverlappingTransactions(
+	public List<Transaction> getOverlappingTransactions(
 			List<Transaction> imported) {
 
 		logger.debug(">> getOverlappingTransactions()");
@@ -45,7 +46,7 @@ public class DuplicateManager {
 
 		List<Transaction> overlappingTransactions = null;
 
-		TransactionDAO tdao = new TransactionDAO();
+		//tdao = new TransactionDAO();
 		overlappingTransactions = tdao.getDateRange(fromDate, toDate);
 
 		logger.debug("<< getOverlappingTransactions() - retrieved "
@@ -61,7 +62,7 @@ public class DuplicateManager {
 		return overlappingTransactions;
 	}
 
-	private Date getStartDate(List<Transaction> transactions) {
+	public Date getStartDate(List<Transaction> transactions) {
 
 		logger.debug(">> getEarliestDate()");
 
@@ -80,7 +81,7 @@ public class DuplicateManager {
 		return earliest;
 	}
 
-	private Date getEndDate(List<Transaction> transactions) {
+	public Date getEndDate(List<Transaction> transactions) {
 
 		logger.debug(">> getLatestDate()");
 
@@ -99,38 +100,36 @@ public class DuplicateManager {
 		return latest;
 	}
 
-	private void checkForDuplicates(List<Transaction> imported,
-			List<Transaction> stored) {
+	public void checkForDuplicates(List<Transaction> importedTransactions,
+			List<Transaction> storedTransactions) {
 
 		logger.debug(">> checkForDuplicates()");
 
 		duplicates = new ArrayList<>();
-		originals = new ArrayList<>();
+		unique = new ArrayList<>();
 
-		for (Transaction timport : imported) {
-			for (Transaction simport : stored) {
-
-				if (timport.getDate().equals(simport.getDate())
-						&& timport.getDescription().equals(
-								simport.getDescription())
-						&& timport.getAmount().equals(simport.getAmount())) {
-					duplicates.add(timport);
-				} else {
-					originals.add(timport);
-				}
-			}
+		for (Transaction toImport : importedTransactions) {
+                if(storedTransactions.contains(toImport)) {
+                        duplicates.add(toImport);
+                } else {
+                        unique.add(toImport);
+                }
 		}
 
-		logger.debug("<< checkForDuplicates - Originals: " + originals.size()
+		logger.debug("<< checkForDuplicates - Originals: " + unique.size()
 				+ " Duplicates: " + duplicates.size());
 	}
 
-	public List<Transaction> getDuplicates() {
+	public List<Transaction> getDuplicateTransactions() {
 		return duplicates;
 	}
 
-	public List<Transaction> getOriginals() {
-		return originals;
+	public List<Transaction> getUniqueTransactions() {
+		return unique;
+	}
+
+	public void setTransactionDao(TransactionDAO tdao) {
+		this.tdao = tdao;
 	}
 
 }

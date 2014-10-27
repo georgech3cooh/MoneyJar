@@ -25,14 +25,14 @@ import com.moneyjar.transaction.Transaction;
 public class DuplicateManagerTest {
 
 	private DuplicateManager duplicateManager;
-	private TransactionDAO tdao;
+	private TransactionDao tdao;
 	private List<Transaction> transactionsList;
 	private List<Transaction> comparedList;
 	
 	@Before
 	public void setUp() throws Exception {
 		duplicateManager = new DuplicateManager();
-		tdao = mock(TransactionDAO.class);
+		tdao = mock(TransactionDao.class);
 		transactionsList = new ArrayList<>();
 		transactionsList.add(new Transaction("2014-10-01","Description 001","10.00"));
 		transactionsList.add(new Transaction("2014-10-21","Description 002","11.00"));

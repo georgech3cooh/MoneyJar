@@ -22,7 +22,7 @@ import com.moneyjar.transaction.Transaction;
 @RunWith(MockitoJUnitRunner.class)
 public class StatementImporterTest {
 	
-	TransactionDAO tdao;
+	TransactionDao tdao;
 	StatementImporter statementImporter;
 	File testFile;
 	
@@ -30,7 +30,7 @@ public class StatementImporterTest {
 	public void setUp() {
 		statementImporter = new StatementImporter();
 		testFile = new File("testfile.csv");
-		tdao = mock(TransactionDAO.class);
+		tdao = mock(TransactionDao.class);
 	}
 		
 	@Test
@@ -42,13 +42,13 @@ public class StatementImporterTest {
 	@Test
 	public void testGetParser() {
 		StatementParser parser = statementImporter.getParser("csv");
-		assertThat(parser, instanceOf(CSVParser.class));
+		assertThat(parser, instanceOf(CsvParser.class));
 	}
 
 	@Test
 	public void testDefaultParser() {
 		StatementParser parser = statementImporter.getParser("undefinedExtension");
-		assertThat(parser, instanceOf(CSVParser.class));
+		assertThat(parser, instanceOf(CsvParser.class));
 	}
 	
 	@Test

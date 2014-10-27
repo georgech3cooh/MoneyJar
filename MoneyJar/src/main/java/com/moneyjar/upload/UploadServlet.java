@@ -50,7 +50,7 @@ public class UploadServlet extends HttpServlet {
 
 		StatementImporter importer = new StatementImporter();
 		try {
-			importer.statementImport(uploadedFile);
+			importer.importStatement(uploadedFile);
 		} catch (Exception e) {
 			message = e.getMessage();
 		}

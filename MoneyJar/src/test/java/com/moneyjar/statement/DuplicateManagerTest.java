@@ -1,11 +1,14 @@
 package com.moneyjar.statement;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -54,14 +57,20 @@ public class DuplicateManagerTest {
 	}
 	
 	@Test
-	@Ignore
-	public void testGetStartDate() {
+	public void testGetStartDate() throws ParseException {
+		Date startDate = duplicateManager.getStartDate(transactionsList);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date compare = sdf.parse("2014-10-01");
+		assertEquals(startDate, compare);
 	}
 	
 	
 	@Test
-	@Ignore
-	public void testGetEndDate() {
+	public void testGetEndDate() throws ParseException {
+		Date lastDate = duplicateManager.getEndDate(transactionsList);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date compare = sdf.parse("2014-10-31");
+		assertEquals(lastDate, compare);
 	}
 	
 	

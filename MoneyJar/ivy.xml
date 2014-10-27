@@ -8,5 +8,6 @@
 	    <dependency org="log4j" name="log4j" rev="1.2.16"/>
 		<dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="8.0.14"/>
 		<dependency org="org.mockito" name="mockito-all" rev="1.9.5"/>
+		<dependency org="org.springframework" name="spring-web" rev="4.1.0.RELEASE"/>
     </dependencies>
 </ivy-module>

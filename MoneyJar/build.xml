@@ -30,6 +30,7 @@
         <mkdir dir="${build.dir}" />
         <mkdir dir="${dist.dir}" />
         <mkdir dir="${test.reports}" /> 
+       
     </target>
     
     <!-- clean -->
@@ -37,6 +38,7 @@
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${test.reports}" />
+		
 	</target>
     
 	<!-- resolve dependencies -->
@@ -86,7 +88,8 @@
 				<include name="**/*.*" />
 			</fileset>
 			<lib dir="${lib.dir}" >
-				<exclude name="**/*servlet-api*.jar"/>
+			    <include name="*.jar"/>
+				<!--  exclude name="**/*servlet-api*.jar"/ -->
 			</lib>
 			<classes dir="${build.dir}" />
 			

@@ -55,7 +55,7 @@ public class StatementImporterTest {
 	public void testImportStatement() throws Exception {
 		doNothing().when(tdao).create(anyListOf(Transaction.class));
 		
-		statementImporter.setTdao(tdao);
+		statementImporter.setTransactionDao(tdao);
 		statementImporter.importStatement(testFile);
 		
 		verify(tdao).create(anyListOf(Transaction.class));

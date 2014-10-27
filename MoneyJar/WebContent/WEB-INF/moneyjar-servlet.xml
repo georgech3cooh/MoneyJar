@@ -17,6 +17,26 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
      </bean> 
+    
+     
+     <!-- Domain Beans -->
+     
+     <bean id="transaction" class="com.moneyjar.transaction.Transaction" />
+     
+     <bean id="transactionDao" class="com.moneyjar.statement.TransactionDao" />
+     
+     <bean id="statementImporter" class="com.moneyjar.statement.StatementImporter">
+         <property name="transactionDao" ref="transactionDao" />
+     </bean>
+     
+     <bean id="duplicateManager" class="com.moneyjar.statement.DuplicateManager" >
+         <property name="transactionDao" ref="transactionDao" />
+     </bean>
+     
+     <bean id="csvParser" class="com.moneyjar.statement.CsvParser" />
+    
+     <!-- Controller Beans -->
+     
      
      <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
      <mvc:annotation-driven/>

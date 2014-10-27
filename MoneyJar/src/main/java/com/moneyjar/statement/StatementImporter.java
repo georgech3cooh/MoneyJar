@@ -10,7 +10,7 @@ import com.moneyjar.transaction.Transaction;
 public class StatementImporter {
 
 	private Logger logger = Logger.getLogger(StatementImporter.class);
-	private TransactionDao tdao;
+	private TransactionDao transactionDao;
 	
 	public void importStatement(File statement) throws Exception {
 		logger.debug(">> statementImport()");
@@ -23,7 +23,7 @@ public class StatementImporter {
 		List<Transaction> transactionsFromStatement  = parser.parseStatement(statement);
 
 		if (transactionsFromStatement != null) {
-			tdao.create(transactionsFromStatement);
+			transactionDao.create(transactionsFromStatement);
 		}
 	}
 
@@ -60,8 +60,12 @@ public class StatementImporter {
 		return parser;
 	}
 
-	public void setTdao(TransactionDao tdao) {
-		this.tdao = tdao;
+	public TransactionDao getTransactionDao() {
+		return transactionDao;
+	}
+
+	public void setTransactionDao(TransactionDao transactionDao) {
+		this.transactionDao = transactionDao;
 	}
 
 }

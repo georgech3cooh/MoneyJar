@@ -14,9 +14,9 @@ import org.hibernate.SessionFactory;
 import com.moneyjar.hibernate.HibernateUtil;
 import com.moneyjar.transaction.Transaction;
 
-public class TransactionDAO {
+public class TransactionDao {
 
-	private Logger logger = Logger.getLogger(TransactionDAO.class);
+	private Logger logger = Logger.getLogger(TransactionDao.class);
 
 	public void create(List<Transaction> transactions) {
 

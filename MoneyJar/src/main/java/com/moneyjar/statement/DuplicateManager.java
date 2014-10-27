@@ -12,7 +12,7 @@ public class DuplicateManager {
 
 	private List<Transaction> duplicates = null;
 	private List<Transaction> unique = null;
-	private TransactionDAO tdao;
+	private TransactionDao tdao;
 
 	Logger logger = Logger.getLogger(DuplicateManager.class);
 
@@ -128,7 +128,7 @@ public class DuplicateManager {
 		return unique;
 	}
 
-	public void setTransactionDao(TransactionDAO tdao) {
+	public void setTransactionDao(TransactionDao tdao) {
 		this.tdao = tdao;
 	}
 

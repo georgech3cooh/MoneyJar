@@ -15,8 +15,6 @@
        	</p>
         <p><input type="Submit" value="Upload"></p>
         </form>
-
-
-
+        
 	</body>
 </html>

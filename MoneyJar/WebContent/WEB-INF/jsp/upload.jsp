@@ -12,7 +12,6 @@
         <p>Please select a file to upload.</p>
         <p>
                 <input type="file" name="file" size="50">
-                <input type="text" name="name">
        	</p>
         <p><input type="Submit" value="Upload"></p>
         </form>

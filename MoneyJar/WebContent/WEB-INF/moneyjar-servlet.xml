@@ -10,8 +10,10 @@
 	   					   http://www.springframework.org/schema/context 
    						   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <!-- Enable Spring Beans Auto-discovery -->
     <context:component-scan base-package="com.moneyjar" />
     
+	<!-- Define Which View Resolver To Use -->    
      <bean id="viewResolver"
     	class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/jsp/" />
@@ -19,7 +21,7 @@
      </bean> 
     
      
-     <!-- Domain Beans -->
+     <!-- Declare Domain Beans -->
      
      <bean id="transaction" class="com.moneyjar.transaction.Transaction" />
      
@@ -35,10 +37,12 @@
      
      <bean id="csvParser" class="com.moneyjar.statement.CsvParser" />
     
-     <!-- Controller Beans -->
+     <!-- Declare Controller Beans -->
      
      
      <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+     
+     <!-- Enable Spring MVC Configuration Using Annotations -->
      <mvc:annotation-driven/>
      
 </beans>

@@ -8,11 +8,16 @@
 </head>
 <body>
 
-<form action="upload" enctype="multipart/form-data" method="post" >
-<p>Please select a file to upload.</p>
-<p><input type="file" name="file" size="50" /></p>
-<p><input type="Submit" value="Upload" /></p>
-</form>
+        <form action="upload" enctype="multipart/form-data" method="post" >
+        <p>Please select a file to upload.</p>
+        <p>
+                <input type="file" name="file" size="50">
+                <input type="text" name="name">
+       	</p>
+        <p><input type="Submit" value="Upload"></p>
+        </form>
 
-</body>
+
+
+	</body>
 </html>

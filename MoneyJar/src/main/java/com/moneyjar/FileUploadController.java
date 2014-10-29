@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import org.apache.log4j.Logger;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.moneyjar.statement.StatementImporter;
+
 @Controller
 public class FileUploadController {
+	
+	@Autowired
+	StatementImporter statementImporter;
 
 	Logger logger = Logger.getLogger(FileUploadController.class);
 	
@@ -26,32 +31,41 @@ public class FileUploadController {
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, 
 									Model model) {
-		String name = file.getOriginalFilename();
-		logger.debug("Uploading " + name + " to server.");
+		String fileName = file.getOriginalFilename();
+		logger.debug("Uploading " + fileName + " to server.");
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
+				File uploadedFile = new File(fileName);
 				BufferedOutputStream stream = new BufferedOutputStream(
-						new FileOutputStream(new File(name)));
+						new FileOutputStream(uploadedFile));
 				stream.write(bytes);
 				stream.close();
-				model.addAttribute("message", "The file " + name
+				model.addAttribute("message", "The file " + fileName
 						+ " was successfully uploaded.");
 				logger.info("File upload successful.");
+				
+				// Process the file
+				processFile(uploadedFile);
+				
 				return "success";
 
 			} catch (Exception e) {
-				model.addAttribute("message", "The file" + name
+				model.addAttribute("message", "The file" + fileName
 						+ " could not be uploaded - because " + e.getMessage());
 				logger.info("File upload failed.");
 				return "failure";
 			}
 		} else {
-			model.addAttribute("message", "The file " + name
+			model.addAttribute("message", "The file " + fileName
 					+ "could not be uploaded, because the file is empty.");
 			logger.info("File upload failed.");
 			return "failure";
 		}
+	}
+
+	private void processFile(File uploadedFile) throws Exception {
+		statementImporter.importStatement(uploadedFile);
 	}
 
 }

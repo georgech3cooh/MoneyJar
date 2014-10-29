@@ -39,6 +39,7 @@ public class FileUploadController {
 				byte[] bytes = file.getBytes();
 				
 				File uploadedFile = new File(systemUploadPath, fileName);
+				
 				BufferedOutputStream stream = new BufferedOutputStream(
 						new FileOutputStream(uploadedFile));
 				stream.write(bytes);
@@ -52,19 +53,19 @@ public class FileUploadController {
 				model.addAttribute("message", "The file " + fileName
 						+ " was successfully uploaded.");
 				
-				logger.debug("Deleting uploaded file.");
-				Boolean deleted = uploadedFile.delete();
-				if (!deleted) {
-					logger.error("The working file was not deleted.");
-				}
-				
 				return "success";
 
 			} catch (Exception e) {
 				model.addAttribute("message", "The file" + fileName
 						+ " could not be uploaded - because " + e.getMessage());
-				logger.info("File upload failed.");
+				logger.info("File upload failed - because" + e.getMessage());
 				return "failure";
+			} finally {
+				logger.debug("Deleting uploaded file.");
+				Boolean deleted = uploadedFile.delete();
+				if (!deleted) {
+					logger.error("The working file was not deleted.");
+				}
 			}
 		} else {
 			model.addAttribute("message", "The file " + fileName

@@ -21,6 +21,7 @@ public class FileUploadController {
 	@Autowired
 	StatementImporter statementImporter;
 
+	String systemUploadPath = "/opt/upload/";
 	Logger logger = Logger.getLogger(FileUploadController.class);
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.GET) 
@@ -36,17 +37,26 @@ public class FileUploadController {
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
-				File uploadedFile = new File(fileName);
+				
+				File uploadedFile = new File(systemUploadPath, fileName);
 				BufferedOutputStream stream = new BufferedOutputStream(
 						new FileOutputStream(uploadedFile));
 				stream.write(bytes);
 				stream.close();
+				logger.debug("File stored to local file system " 
+								+ uploadedFile.getAbsolutePath());
+				
+				statementImporter.importStatement(uploadedFile);
+				logger.debug("File upload and persistence completed.");
+				
 				model.addAttribute("message", "The file " + fileName
 						+ " was successfully uploaded.");
-				logger.info("File upload successful.");
 				
-				// Process the file
-				processFile(uploadedFile);
+				logger.debug("Deleting uploaded file.");
+				Boolean deleted = uploadedFile.delete();
+				if (!deleted) {
+					logger.error("The working file was not deleted.");
+				}
 				
 				return "success";
 
@@ -62,10 +72,6 @@ public class FileUploadController {
 			logger.info("File upload failed.");
 			return "failure";
 		}
-	}
-
-	private void processFile(File uploadedFile) throws Exception {
-		statementImporter.importStatement(uploadedFile);
 	}
 
 }

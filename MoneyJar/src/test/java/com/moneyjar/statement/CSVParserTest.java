@@ -8,19 +8,19 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.moneyjar.statement.CSVParser;
+import com.moneyjar.statement.CsvParser;
 import com.moneyjar.transaction.Transaction;
 
 public class CSVParserTest {
 
 	private File csvTestFileWithValidData;
 	private File nonExistentFile;
-	private CSVParser csvParser;
+	private CsvParser csvParser;
 	List<Transaction> transactions;
 
 	@Before
 	public void setUp() {
-		csvParser = new CSVParser();
+		csvParser = new CsvParser();
 		csvTestFileWithValidData = new File("testfile.csv");
 		nonExistentFile = new File("nonExistentFile.csv");
 	}

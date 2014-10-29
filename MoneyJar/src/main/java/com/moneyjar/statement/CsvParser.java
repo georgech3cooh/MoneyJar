@@ -13,13 +13,13 @@ import au.com.bytecode.opencsv.CSVReader;
 
 import com.moneyjar.transaction.Transaction;
 
-public class CSVParser implements StatementParser {
+public class CsvParser implements StatementParser {
 
 	private CSVReader csvReader;
 	private Logger logger;
 
-	public CSVParser() {
-		logger = Logger.getLogger(CSVParser.class);
+	public CsvParser() {
+		logger = Logger.getLogger(CsvParser.class);
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE project>
 
 <project name="MoneyJarWeb Project Build" default="upload"
 	xmlns:ivy="antlib:org.apache.ivy.ant">
@@ -30,6 +31,7 @@
         <mkdir dir="${build.dir}" />
         <mkdir dir="${dist.dir}" />
         <mkdir dir="${test.reports}" /> 
+       
     </target>
     
     <!-- clean -->
@@ -37,6 +39,7 @@
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${test.reports}" />
+		
 	</target>
     
 	<!-- resolve dependencies -->
@@ -86,7 +89,8 @@
 				<include name="**/*.*" />
 			</fileset>
 			<lib dir="${lib.dir}" >
-				<exclude name="**/*servlet-api*.jar"/>
+			    <include name="*.jar"/>
+				<!--  exclude name="**/*servlet-api*.jar"/ -->
 			</lib>
 			<classes dir="${build.dir}" />
 			
@@ -96,7 +100,8 @@
 			
 			<!-- Add configuration files to WEB-INF/classes directory -->
 			<classes dir="${properties.dir}" >
-				<include name="*.xml" />
+				<include name="hibernate.cfg.xml" />
+				<include name="log4j.properties" />
 			</classes>
 				
 		</war>

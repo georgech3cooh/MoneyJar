@@ -1,4 +1,7 @@
-<ivy-module version="2.4">
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.4" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation = "http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info organisation="khominhvi" module="moneyjar" />
     <dependencies>
 	    <dependency org="org.hibernate" name="hibernate-core" rev="4.3.5.Final"/>
@@ -6,7 +9,7 @@
 	    <dependency org="junit" name="junit" rev="4.11"/>
 	    <dependency org="net.sf.opencsv" name="opencsv" rev="2.3"/>
 	    <dependency org="log4j" name="log4j" rev="1.2.16"/>
-		<dependency org="org.apache.tomcat" name="tomcat-servlet-api" rev="8.0.14"/>
 		<dependency org="org.mockito" name="mockito-all" rev="1.9.5"/>
+		<dependency org="org.springframework" name="spring-webmvc" rev="4.1.1.RELEASE"/>
     </dependencies>
 </ivy-module>

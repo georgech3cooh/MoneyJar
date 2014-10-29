@@ -12,7 +12,7 @@ public class DuplicateManager {
 
 	private List<Transaction> duplicates = null;
 	private List<Transaction> unique = null;
-	private TransactionDAO tdao;
+	private TransactionDao transactionDao;
 
 	Logger logger = Logger.getLogger(DuplicateManager.class);
 
@@ -46,8 +46,7 @@ public class DuplicateManager {
 
 		List<Transaction> overlappingTransactions = null;
 
-		//tdao = new TransactionDAO();
-		overlappingTransactions = tdao.getDateRange(fromDate, toDate);
+		overlappingTransactions = transactionDao.getDateRange(fromDate, toDate);
 
 		logger.debug("<< getOverlappingTransactions() - retrieved "
 				+ overlappingTransactions.size() + " transactions from '"
@@ -128,8 +127,12 @@ public class DuplicateManager {
 		return unique;
 	}
 
-	public void setTransactionDao(TransactionDAO tdao) {
-		this.tdao = tdao;
+	public void setTransactionDao(TransactionDao transactionDao) {
+		this.transactionDao = transactionDao;
+	}
+
+	public TransactionDao getTransactionDao() {
+		return transactionDao;
 	}
 
 }

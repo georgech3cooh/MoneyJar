@@ -10,7 +10,7 @@ import com.moneyjar.transaction.Transaction;
 public class StatementImporter {
 
 	private Logger logger = Logger.getLogger(StatementImporter.class);
-	private TransactionDAO tdao;
+	private TransactionDao transactionDao;
 	
 	public void importStatement(File statement) throws Exception {
 		logger.debug(">> statementImport()");
@@ -23,7 +23,7 @@ public class StatementImporter {
 		List<Transaction> transactionsFromStatement  = parser.parseStatement(statement);
 
 		if (transactionsFromStatement != null) {
-			tdao.create(transactionsFromStatement);
+			transactionDao.create(transactionsFromStatement);
 		}
 	}
 
@@ -50,18 +50,22 @@ public class StatementImporter {
 		// project
 		StatementParser parser = null;	
 		if (fileExtension.equals("csv")) {
-			parser = new CSVParser();
+			parser = new CsvParser();
 		} else {
 			// Default parser
-			parser = new CSVParser();
+			parser = new CsvParser();
 		}
 
 		logger.debug("<< getParser() -- returning parser: " + parser.getClass());
 		return parser;
 	}
 
-	public void setTdao(TransactionDAO tdao) {
-		this.tdao = tdao;
+	public TransactionDao getTransactionDao() {
+		return transactionDao;
+	}
+
+	public void setTransactionDao(TransactionDao transactionDao) {
+		this.transactionDao = transactionDao;
 	}
 
 }

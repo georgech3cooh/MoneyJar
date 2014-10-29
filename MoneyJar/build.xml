@@ -100,7 +100,8 @@
 			
 			<!-- Add configuration files to WEB-INF/classes directory -->
 			<classes dir="${properties.dir}" >
-				<include name="*.xml" />
+				<include name="hibernate.cfg.xml" />
+				<include name="log4j.properties" />
 			</classes>
 				
 		</war>

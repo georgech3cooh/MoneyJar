@@ -19,10 +19,10 @@ import com.moneyjar.statement.StatementImporter;
 public class FileUploadController {
 
 	@Autowired
-	StatementImporter statementImporter;
+	private StatementImporter statementImporter;
 
-	String systemUploadPath = "/opt/upload/";
-	Logger logger = Logger.getLogger(FileUploadController.class);
+	private static final String UPLOAD_PATH = "/opt/upload/";
+	private static Logger logger = Logger.getLogger(FileUploadController.class);
 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public String pageRequest() {
@@ -37,7 +37,7 @@ public class FileUploadController {
 		logger.debug("Uploading " + fileName + " to server.");
 		
 		if (!file.isEmpty()) {
-			File uploadedFile = new File(systemUploadPath, fileName);
+			File uploadedFile = new File(UPLOAD_PATH, fileName);
 			
 			try {
 				byte[] bytes = file.getBytes();

@@ -4,7 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import jxl.common.Logger;
+import org.apache.log4j.Logger;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,19 +37,19 @@ public class FileUploadController {
 				stream.close();
 				model.addAttribute("message", "The file " + name
 						+ " was successfully uploaded.");
-				logger.debug("File upload successful.");
+				logger.info("File upload successful.");
 				return "success";
 
 			} catch (Exception e) {
 				model.addAttribute("message", "The file" + name
 						+ " could not be uploaded - because " + e.getMessage());
-				logger.debug("File upload failed.");
+				logger.info("File upload failed.");
 				return "failure";
 			}
 		} else {
 			model.addAttribute("message", "The file " + name
 					+ "could not be uploaded, because the file is empty.");
-			logger.debug("File upload failed.");
+			logger.info("File upload failed.");
 			return "failure";
 		}
 	}

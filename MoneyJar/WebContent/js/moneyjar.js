@@ -3,5 +3,5 @@
  */
 
 $(function () {
-	$("input[type=date]").datepicker();
+	$("input[type=date]").datepicker({dateFormat:"yy-mm-dd"});
 });

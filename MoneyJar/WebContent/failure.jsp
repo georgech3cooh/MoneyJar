@@ -8,5 +8,8 @@
 </head>
 <body>
 	<h2>${message}</h2>
+	
+	<%@ include file="navigation.jspf" %>
+	
 </body>
 </html>

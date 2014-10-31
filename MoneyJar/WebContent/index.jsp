@@ -6,20 +6,12 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-Hello World!
-<br>
-
-<div id="todo">
-<ol>
-    <li>Write up dirty landing page</li>
-    <li class="strikethrough">Create rudimentary navigation div.</li>
-    <li>Create rudimentary date picker div.</li>
-    <li>Create rudimentary transaction table.</li>
-    <li class="strikethrough">Create rudimentary upload page.</li>
-</ol>
-</div>
 
 <%@ include file="navigation.jspf" %>
+
+<div class="content">
+	<h2>Display content here somewhere.</h2>
+</div>
 
 </body>
 </html>

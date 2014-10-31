@@ -1,7 +1,7 @@
 <div id="date-picker">
-        <form id="date-picker" method="POST" action="/transactions">
-                <input id="from_date" name="from_date" type="date" placeholder="yyyy-mm-dd">
-                <input id="to_date" name="to_date" type="date" placeholder="yyyy-mm-dd">
-                <input id="date_submit" name="date_submit" type="submit"> 
-        </form>
+    <form id="date-picker" method="POST" action="/transactions">
+        <input id="from_date" name="from_date" type="date" placeholder="yyyy-mm-dd">
+        <input id="to_date" name="to_date" type="date" placeholder="yyyy-mm-dd">
+        <input id="date_submit" name="date_submit" type="submit"> 
+    </form>
 </div>	

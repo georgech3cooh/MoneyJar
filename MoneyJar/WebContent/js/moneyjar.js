@@ -2,6 +2,6 @@
  * The Javascript file for Moneyjar web application
  */
 
-$function () {
+$(function () {
 	$("input[type=date]").datepicker();
-}
+});

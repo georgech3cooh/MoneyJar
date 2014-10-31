@@ -13,5 +13,7 @@
 	<h2>Display content here somewhere.</h2>
 </div>
 
+<%@ include file="date-picker.jspf" %>
+
 </body>
 </html>

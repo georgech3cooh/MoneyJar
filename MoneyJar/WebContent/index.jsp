@@ -19,5 +19,7 @@
 
 <%@ include file="date-picker.jspf" %>
 
+<%@ include file="transaction-history.jspf" %>
+
 </body>
 </html>

@@ -38,8 +38,9 @@
     
     <!-- Declare Controller Beans -->
      
-    <!-- Map CSS requests to correct directory -->
-    <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+    <!-- Map resource requests to correct directory -->
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
      
     <!-- Enable Spring MVC Configuration Using Annotations -->
     <mvc:annotation-driven/>

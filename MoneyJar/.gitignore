@@ -1,0 +1,8 @@
+/build/
+/dist/
+/reports/
+/error.log
+/lib/
+/bin/
+/archived-packages/
+/excluded-libs/

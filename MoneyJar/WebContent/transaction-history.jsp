@@ -21,9 +21,13 @@
     <div id="transaction-history">
         <!-- Display all transactions here -->
         <table id="transaction-history">
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
             <c:forEach var="transaction" items="${transactions}">
                 <tr id="transaction-row-${transaction.getId()}">
-                    <td>${transaction.getId()}</td>
                     <td>${transaction.getDate()}</td>
                     <td>${transaction.getDescription()}</td>
                     <td>${transaction.getAmount()}</td>

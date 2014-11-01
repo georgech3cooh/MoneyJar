@@ -11,5 +11,6 @@
 	    <dependency org="log4j" name="log4j" rev="1.2.16"/>
 		<dependency org="org.mockito" name="mockito-all" rev="1.9.5"/>
 		<dependency org="org.springframework" name="spring-webmvc" rev="4.1.1.RELEASE"/>
+		<dependency org="javax.servlet" name="jstl" rev="1.2"/>
     </dependencies>
 </ivy-module>

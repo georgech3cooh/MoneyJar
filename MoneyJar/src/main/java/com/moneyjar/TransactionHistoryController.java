@@ -23,7 +23,7 @@ public class TransactionHistoryController {
 	TransactionDao transactionDao;
 	static Logger logger = Logger.getLogger(TransactionHistoryController.class);
 
-	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+	@RequestMapping(value = "/transactions.jsp", method = RequestMethod.GET)
 	public String getTransactionHistoryRange(
 			@RequestParam("from-date") String from, @RequestParam("to-date") String to,
 			Model model) throws ParseException {

@@ -29,7 +29,7 @@ public class FileUploadController {
 		return "upload";
 	}
 
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@RequestMapping(value = "/upload.jsp", method = RequestMethod.POST)
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			Model model) {
 		

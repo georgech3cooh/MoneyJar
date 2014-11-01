@@ -1,5 +1,6 @@
 <div id="date-picker">
-    <form id="date-picker" method="GET" action="/transactions">
+    <form id="date-picker" method="GET" action="transactions">
+        Search:
         <input id="from-date" name="from-date" type="date" placeholder="yyyy-mm-dd">
         <input id="to-date" name="to-date" type="date" placeholder="yyyy-mm-dd">
         <input id="date_submit" name="date_submit" type="submit"> 

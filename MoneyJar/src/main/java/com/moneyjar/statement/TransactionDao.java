@@ -1,5 +1,6 @@
 package com.moneyjar.statement;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -45,8 +46,12 @@ public class TransactionDao {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public List<Transaction> getDateRange(Date fromDate, Date toDate) {
-
+	public List<Transaction> getDateRange(Date from, Date to) {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String fromDate = sdf.format(from);
+		String toDate = sdf.format(to);
+		
 		logger.debug(">> getDateRange() - from '" + fromDate + "' to '"
 				+ toDate + "'");
 
@@ -55,12 +60,13 @@ public class TransactionDao {
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;
 		Query query = null;
-		String queryString = "FROM transaction WHERE date BETWEEN '" 
+		String queryString = "FROM Transaction WHERE date BETWEEN '" 
 				+ fromDate + "' and '" + toDate + "'";
 		try {
 			tx = session.beginTransaction();
 			query = session.createQuery(queryString);
 			List results = query.list();
+			logger.debug("Retrieved " + results.size() + " results from database.");
 			for (Iterator itr = results.iterator(); itr.hasNext();) {
 				transactions.add((Transaction) itr.next());
 			}

@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
 	   					   http://www.springframework.org/schema/mvc
-                           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 	   					   http://www.springframework.org/schema/context 
    						   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
@@ -20,7 +20,17 @@
         <property name="suffix" value=".jsp" />
 	</bean> 
     
-     
+    <!-- Define ContentNegotiationViewResolver -->
+    <bean id="contentNegotiationManager"
+             class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+    	<property name="defaultContentType" value="application/html" />
+    	<property name="mediaTypes">
+    	    <map>
+    	        <entry key="json" value="application/json" />
+    	    </map>
+    	</property>
+    </bean>
+      
 	<!-- Declare Domain Beans -->
     <bean id="transaction" class="com.moneyjar.transaction.Transaction" />
      
@@ -43,7 +53,7 @@
     <mvc:resources mapping="/js/**" location="/js/" />
      
     <!-- Enable Spring MVC Configuration Using Annotations -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
     
     <!-- Enable File Uploading - By Specifying Multipart Resolver -->
      <bean id="multipartResolver"

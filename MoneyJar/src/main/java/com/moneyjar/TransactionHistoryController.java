@@ -25,19 +25,21 @@ public class TransactionHistoryController {
 
 	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
 	public String getTransactionHistoryRange(
-			@RequestParam("from-date") String from, @RequestParam("to-date") String to,
-			Model model) throws ParseException {
+			@RequestParam("from-date") String from,
+			@RequestParam("to-date") String to, Model model)
+			throws ParseException {
 
 		logger.debug("Transaction history request called: from [" + from
 				+ "] to [" + to + "]");
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date fromDate = sdf.parse(from);
 		Date toDate = sdf.parse(to);
-		
-		List<Transaction> transactions = transactionDao.getDateRange(fromDate, toDate);
+
+		List<Transaction> transactions = transactionDao.getDateRange(fromDate,
+				toDate);
 		logger.debug("Retrieved transactions " + transactions.size());
-		
+
 		model.addAttribute("from", from);
 		model.addAttribute("to", to);
 		model.addAttribute("transactions", transactions);

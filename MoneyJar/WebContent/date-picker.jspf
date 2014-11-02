@@ -1,5 +1,5 @@
 <div id="date-picker">
-    <form method="GET" action="transactions.jsp">
+    <form method="GET" action="transactions">
         Search:
         <input id="from-date" name="from-date" type="date" placeholder="yyyy-mm-dd" value="${from}">
         <input id="to-date" name="to-date" type="date" placeholder="yyyy-mm-dd" value="${to}">

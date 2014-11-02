@@ -7,14 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="content">
 
-        <form action="upload" enctype="multipart/form-data" method="post" >
+<%@ include file="navigation.jspf" %>
+
+    <form action="upload" enctype="multipart/form-data" method="post" >
         <p>Please select a file to upload.</p>
-        <p>
-                <input type="file" name="file" size="50">
-       	</p>
+        <p><input type="file" name="file" size="50"></p>
         <p><input type="Submit" value="Upload"></p>
-        </form>
+    </form>
         
-	</body>
+</div>      
+</body>
 </html>

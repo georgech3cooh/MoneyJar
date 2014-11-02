@@ -52,7 +52,7 @@
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/js/**" location="/js/" />
      
-    <!-- Enable Spring MVC Configuration Using Annotations -->
+    <!-- Enable Spring MVC Configuration Using Annotations and Content Negotiation-->
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
     
     <!-- Enable File Uploading - By Specifying Multipart Resolver -->

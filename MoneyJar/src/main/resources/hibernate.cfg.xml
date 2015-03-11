@@ -17,7 +17,7 @@
    <property name="format_sql">true</property>
 
    <!-- List of XML mapping files -->
-   <mapping class="com.moneyjar.transaction.Transaction"/>
+   <mapping class="com.khominhvi.moneyjar.transaction.Transaction"/>
 
 </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-<div id="date-picker">
+<div class="date-picker">
     <form method="GET" action="transactions">
         Search:
         <input id="from-date" name="from-date" type="date" placeholder="yyyy-mm-dd" value="${from}">

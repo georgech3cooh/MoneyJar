@@ -2,37 +2,129 @@
 	text-decoration: line-through;
 }
 
-#content {
-	width: 600px;
+html {
+	height: 100%;
+}
+
+body {
+	font-family: arial, sans-serif;
+	background-color: #EEE;
+	margin: 0px;
+	height:100%;
+}
+
+h2 {
+	margin: 5px;
+}
+
+.content {
+	height: 100%;
+}
+
+/*** Navigation ***/
+
+.navigation {
+	float: left;
+	width: 200px;
+	margin-top: 40px;
+}
+
+.navigation ul, li {
+	list-style-type: none;
+	padding: 0px;
+}
+
+.navigation a {
+	color: #333;
+	text-decoration: none;
+	display: block;
+	padding: 5px 5px 5px 10px;
+}
+
+.navigation a:hover {
+	background-color: #F8F8F8;
+}
+
+/*** Main ***/
+
+.main {
+	height: 100%;
+	background-color: white;
+	margin-left: 200px;
+	padding: 10px;
+	box-shadow: -3px -3px 3px #AAA;
+}
+
+.charts {
+	padding: 20px;
+	overflow: hidden;
+}
+
+#categories {
+	float: left;
+	padding: 20px;
+}
+
+.doughnut-legend li span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  float: left;
+  margin-top: 4px;
+  margin-right: 8px;
 }
 
 /*** Date Picker ***/
-#date-picker {
+.date-picker {
 	width: 100%;
 	overflow: auto;
 	background-color: #FCF;
 }
 
-#date-picker form {
+.date-picker form {
 	float: right;
 	padding: 5px;
 }
 
-#date-picker form input[type=date] {
+.date-picker form input[type=date] {
 	width: 100px;
 }
 
 /*** Transaction Table ***/
 
-#transaction-history {
-	width: 600px;
+.transaction-history-form {
+	margin: 10px;
 }
 
-#transaction-history table {
+.transaction-history table {
+	
+	border: 1px solid #FCF;
+	border-collapse: collapse;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: left;
-	padding: 10px;
+	width: 100%;
+}
+
+.transaction-history table th {
+	background: #FCF;
+	padding: 5px;
+	font-weight: unset;
+}
+
+.transaction-history table tbody tr:hover {
+	background-color: #FEF;
+}
+
+.transaction-history table td {
+	padding: 4px 8px 4px 6px;
+	color: #333;
+}
+
+.check-box {
+	width:50px;
+	text-align: center;
 }
 
 .date-col {
@@ -40,7 +132,11 @@
 }
 
 .desc-col {
-	width: 250px;
+	max-width: 500px;
+}
+
+.cat-col {
+	width: 150px;
 }
 
 .amnt-col {
@@ -49,6 +145,24 @@
 }
 
 .edit-col {
-	text-align: right;
+	text-align: center;
 	width: 50px;
+}
+
+.bulk-action {
+	background-color: #FCF;
+	padding: 5px;
+}
+
+.transaction-history table .bulk-action td {
+	padding: 5px 5px 5px 10px;
+}
+
+.category {
+	width: 150px;
+	height: 20px;
+}
+
+.transaction-history input[type="submit"] {
+	height: 20px;
 }

@@ -1,22 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Upload Statement</title>
+        <%@ include file="head.jspf" %>
 </head>
 <body>
 <div class="content">
 
-<%@ include file="navigation.jspf" %>
-
-    <form action="upload" enctype="multipart/form-data" method="post" >
-        <p>Please select a file to upload.</p>
-        <p><input type="file" name="file" size="50"></p>
-        <p><input type="Submit" value="Upload"></p>
-    </form>
+        <%@ include file="navigation.jspf" %>
         
-</div>      
+        <div class="main">
+        <h2>Please select a file to upload.</h2>
+        
+            <form action="upload" enctype="multipart/form-data" method="post" >
+                <p><input type="file" name="file" size="50"></p>
+                <p><input type="Submit" value="Upload"></p>
+            </form>
+        </div> <!-- main -->
+</div> <!-- content -->
 </body>
 </html>

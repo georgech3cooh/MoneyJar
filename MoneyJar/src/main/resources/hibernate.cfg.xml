@@ -16,8 +16,11 @@
    <property name="show_sql">true</property>
    <property name="format_sql">true</property>
 
+   <!-- Prepopulate Database -->
+   <property name="hibernate.hbm2ddl.import_files">categories.sql,test-transactions.sql</property>
+   
    <!-- List of XML mapping files -->
    <mapping class="com.khominhvi.moneyjar.transaction.Transaction"/>
-
+   <mapping class="com.khominhvi.moneyjar.transaction.Category" />
 </session-factory>
 </hibernate-configuration>

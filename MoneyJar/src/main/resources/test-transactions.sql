@@ -1,0 +1,10 @@
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-01','Test transaction 1','1.00','1');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-02','Test transaction 2','2.00','2');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-03','Test transaction 3','3.00','3');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-04','Test transaction 4','4.00','4');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-05','Test transaction 5','5.00','5');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-06','Test transaction 6','6.00','6');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-10','Test transaction 7','7.00','6');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-10','Test transaction 8','8.00','6');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-10','Test transaction 9','9.00','2');
+INSERT INTO Transaction (date, description, amount, category_id) VALUES ('2015-03-10','Test transaction 10','10.00','3');

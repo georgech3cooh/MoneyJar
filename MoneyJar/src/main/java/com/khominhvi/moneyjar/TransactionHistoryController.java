@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.khominhvi.moneyjar.statement.TransactionDao;
+import com.khominhvi.moneyjar.hibernate.TransactionDao;
 import com.khominhvi.moneyjar.transaction.Transaction;
 
 @Controller

@@ -1,4 +1,4 @@
-package com.khominhvi.moneyjar.statement;
+package com.khominhvi.moneyjar.hibernate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.khominhvi.moneyjar.hibernate.HibernateUtil;
 import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class TransactionDao {
@@ -55,7 +54,7 @@ public class TransactionDao {
 		logger.debug(">> getDateRange() - from '" + fromDate + "' to '"
 				+ toDate + "'");
 
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		List<Transaction> transactions = new ArrayList<>();
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;
@@ -79,8 +78,38 @@ public class TransactionDao {
 			session.close();
 		}
 
-		logger.debug("<< getDateRange() - returnin results: "
-				+ transactions.size());
+		logger.debug("returning results: " + transactions.size());
 		return transactions;
+	}
+
+	public int bulkUpdate(String category, String[] selection) {
+		
+		List<Long> ids = QueryStringUtil.stringArrayToLongList(selection);
+		
+		String updateString = "UPDATE Transaction SET category_id=" + 
+					"(SELECT id FROM Category WHERE name =:category)" +
+					"WHERE id IN (:transactionIds)";
+		
+		logger.debug("Querying database with: " + updateString );
+		
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		org.hibernate.Transaction tx = null;
+		int result = 0;
+		try {
+			tx = session.beginTransaction();
+			Query query = session.createQuery(updateString);
+			query.setParameter("category", category);
+			query.setParameterList("transactionIds", ids); // Not working
+			result = query.executeUpdate();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		logger.debug("Records affected: " + result);
+		return result;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.khominhvi.moneyjar.hibernate.TransactionDao;
 import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class DuplicateManager {

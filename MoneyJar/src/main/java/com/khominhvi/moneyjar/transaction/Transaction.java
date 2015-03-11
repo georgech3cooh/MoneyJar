@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -22,15 +24,18 @@ public class Transaction {
 	private Date date;
 	private String description;
 	private BigDecimal amount;
+	private Category category;
 	
 	@Transient
-	private Logger logger;
-	
+	private Logger logger = Logger.getLogger(Transaction.class);
+		
 	public Transaction(){
 		logger = Logger.getLogger(Transaction.class);
 		this.description = "";
 		this.date = new Date();
 		this.amount = new BigDecimal("0.00");
+		this.category = new Category();
+		category.setId(1L); // Set default category
 	}
 	
 	public Transaction(String date, String desc, String amount) {
@@ -100,6 +105,16 @@ public class Transaction {
 		BigDecimal temp = new BigDecimal(amount); 
 		this.amount = temp;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="category_id", nullable = false)
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 	@Override
 	public int hashCode() {
@@ -141,6 +156,5 @@ public class Transaction {
 			return false;
 		return true;
 	}
-
 	
 }

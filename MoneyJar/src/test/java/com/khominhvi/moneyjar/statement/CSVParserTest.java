@@ -29,7 +29,6 @@ public class CSVParserTest {
 		try {
 			transactions = csvParser.parseStatement(csvTestFileWithValidData);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertEquals("Size of list", 3, transactions.size());

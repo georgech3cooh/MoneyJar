@@ -33,13 +33,13 @@ public class DuplicateManagerTest {
 	public void setUp() throws Exception {
 		duplicateManager = new DuplicateManager();
 		tdao = mock(TransactionDao.class);
-		transactionsList = new ArrayList<Transaction>();
+		transactionsList = new ArrayList<>();
 		transactionsList.add(new Transaction("2014-10-01","Description 001","10.00"));
 		transactionsList.add(new Transaction("2014-10-21","Description 002","11.00"));
 		transactionsList.add(new Transaction("2014-10-03","Description 003","12.00"));
 		transactionsList.add(new Transaction("2014-10-31","Description 004","13.00"));
 		
-		comparedList = new ArrayList<Transaction>();
+		comparedList = new ArrayList<>();
 		comparedList.add(new Transaction("2014-10-02","Description 001","10.00"));
 		comparedList.add(new Transaction("2014-10-21","Description 002","11.00"));
 		comparedList.add(new Transaction("2014-10-05","Description 003","12.00"));

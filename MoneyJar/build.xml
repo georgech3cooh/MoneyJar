@@ -12,7 +12,7 @@
 	<property name="webapps.dir" location="/Library/Tomcat/apache-tomcat-8.0.14/webapps" />
 	<property name="test.dir" location="src/test/java" />
 	<property name="test.reports" location="reports" />
-	<property name="properties.dir" location="properties" />
+	<property name="resources.dir" location="src/main/resources" />
 
     <!-- specify classpath -->
     <path id="classpath">
@@ -99,7 +99,7 @@
 			-->
 			
 			<!-- Add configuration files to WEB-INF/classes directory -->
-			<classes dir="${properties.dir}" >
+			<classes dir="${resources.dir}" >
 				<include name="hibernate.cfg.xml" />
 				<include name="log4j.properties" />
 			</classes>

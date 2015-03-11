@@ -1,4 +1,4 @@
-package com.moneyjar.transaction;
+package com.khominhvi.moneyjar.transaction;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,8 +9,6 @@ import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import com.moneyjar.transaction.Transaction;
 
 public class TransactionTest {
 

@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.moneyjar.hibernate.HibernateUtil;
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.hibernate.HibernateUtil;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class TransactionDao {
 
@@ -55,7 +55,7 @@ public class TransactionDao {
 		logger.debug(">> getDateRange() - from '" + fromDate + "' to '"
 				+ toDate + "'");
 
-		List<Transaction> transactions = new ArrayList<>();
+		List<Transaction> transactions = new ArrayList<Transaction>();
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;

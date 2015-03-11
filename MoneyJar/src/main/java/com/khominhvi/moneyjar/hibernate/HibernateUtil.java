@@ -1,4 +1,4 @@
-package com.moneyjar.hibernate;
+package com.khominhvi.moneyjar.hibernate;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;

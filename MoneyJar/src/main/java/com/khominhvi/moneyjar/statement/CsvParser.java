@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +9,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import au.com.bytecode.opencsv.CSVReader;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
-import com.moneyjar.transaction.Transaction;
+import au.com.bytecode.opencsv.CSVReader;
 
 public class CsvParser implements StatementParser {
 

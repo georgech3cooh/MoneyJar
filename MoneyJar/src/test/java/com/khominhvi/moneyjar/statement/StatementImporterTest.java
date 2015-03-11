@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 
 @RunWith(MockitoJUnitRunner.class)

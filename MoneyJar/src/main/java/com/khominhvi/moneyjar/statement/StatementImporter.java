@@ -1,11 +1,11 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import java.io.File;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class StatementImporter {
 

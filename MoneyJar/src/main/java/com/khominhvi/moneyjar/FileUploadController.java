@@ -1,4 +1,4 @@
-package com.moneyjar;
+package com.khominhvi.moneyjar;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.moneyjar.statement.StatementImporter;
+import com.khominhvi.moneyjar.statement.StatementImporter;
 
 @Controller
 public class FileUploadController {

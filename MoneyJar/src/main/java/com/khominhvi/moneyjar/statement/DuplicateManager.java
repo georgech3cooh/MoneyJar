@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class DuplicateManager {
 
@@ -104,8 +104,8 @@ public class DuplicateManager {
 
 		logger.debug(">> checkForDuplicates()");
 
-		duplicates = new ArrayList<>();
-		unique = new ArrayList<>();
+		duplicates = new ArrayList<Transaction>();
+		unique = new ArrayList<Transaction>();
 
 		for (Transaction toImport : importedTransactions) {
                 if(storedTransactions.contains(toImport)) {

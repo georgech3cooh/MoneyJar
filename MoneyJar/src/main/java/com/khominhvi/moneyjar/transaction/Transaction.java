@@ -1,4 +1,4 @@
-package com.moneyjar.transaction;
+package com.khominhvi.moneyjar.transaction;
 
 import java.math.BigDecimal;
 import java.text.ParseException;

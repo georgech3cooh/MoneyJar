@@ -1,4 +1,4 @@
-package com.moneyjar;
+package com.khominhvi.moneyjar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.moneyjar.statement.TransactionDao;
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.statement.TransactionDao;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 @Controller
 public class TransactionHistoryController {

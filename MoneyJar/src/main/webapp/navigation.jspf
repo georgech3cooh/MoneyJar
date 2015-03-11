@@ -1,0 +1,6 @@
+<div id="navigation">
+    <ul>
+    	<li><a href="index.jsp">Home</a></li>
+    	<li><a href="upload">Upload</a></li>
+    </ul>
+</div>

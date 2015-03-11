@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DuplicateManagerTest {
@@ -32,13 +32,13 @@ public class DuplicateManagerTest {
 	public void setUp() throws Exception {
 		duplicateManager = new DuplicateManager();
 		tdao = mock(TransactionDao.class);
-		transactionsList = new ArrayList<>();
+		transactionsList = new ArrayList<Transaction>();
 		transactionsList.add(new Transaction("2014-10-01","Description 001","10.00"));
 		transactionsList.add(new Transaction("2014-10-21","Description 002","11.00"));
 		transactionsList.add(new Transaction("2014-10-03","Description 003","12.00"));
 		transactionsList.add(new Transaction("2014-10-31","Description 004","13.00"));
 		
-		comparedList = new ArrayList<>();
+		comparedList = new ArrayList<Transaction>();
 		comparedList.add(new Transaction("2014-10-02","Description 001","10.00"));
 		comparedList.add(new Transaction("2014-10-21","Description 002","11.00"));
 		comparedList.add(new Transaction("2014-10-05","Description 003","12.00"));

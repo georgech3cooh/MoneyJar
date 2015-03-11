@@ -1,4 +1,4 @@
-package com.moneyjar;
+package com.khominhvi.moneyjar;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;

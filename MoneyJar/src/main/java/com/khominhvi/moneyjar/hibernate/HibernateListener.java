@@ -1,4 +1,4 @@
-package com.moneyjar.hibernate;
+package com.khominhvi.moneyjar.hibernate;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

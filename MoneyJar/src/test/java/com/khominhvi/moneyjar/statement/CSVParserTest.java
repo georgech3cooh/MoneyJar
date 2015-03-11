@@ -1,4 +1,4 @@
-package com.moneyjar.statement;
+package com.khominhvi.moneyjar.statement;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,8 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.moneyjar.statement.CsvParser;
-import com.moneyjar.transaction.Transaction;
+import com.khominhvi.moneyjar.transaction.Transaction;
 
 public class CSVParserTest {
 

@@ -32,19 +32,19 @@
     </bean>
       
 	<!-- Declare Domain Beans -->
-    <bean id="transaction" class="com.moneyjar.transaction.Transaction" />
+    <bean id="transaction" class="com.khominhvi.moneyjar.transaction.Transaction" />
      
-    <bean id="transactionDao" class="com.moneyjar.statement.TransactionDao" />
+    <bean id="transactionDao" class="com.khominhvi.moneyjar.statement.TransactionDao" />
      
-    <bean id="statementImporter" class="com.moneyjar.statement.StatementImporter">
+    <bean id="statementImporter" class="com.khominhvi.moneyjar.statement.StatementImporter">
         <property name="transactionDao" ref="transactionDao" />
     </bean>
      
-    <bean id="duplicateManager" class="com.moneyjar.statement.DuplicateManager" >
+    <bean id="duplicateManager" class="com.khominhvi.moneyjar.statement.DuplicateManager" >
         <property name="transactionDao" ref="transactionDao" />
     </bean>
      
-    <bean id="csvParser" class="com.moneyjar.statement.CsvParser" />
+    <bean id="csvParser" class="com.khominhvi.moneyjar.statement.CsvParser" />
     
     <!-- Declare Controller Beans -->
      

@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.khominhvi.moneyjar.hibernate.TransactionDao;
 import com.khominhvi.moneyjar.transaction.Transaction;
 
 

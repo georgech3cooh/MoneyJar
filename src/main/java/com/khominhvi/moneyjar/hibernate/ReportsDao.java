@@ -16,13 +16,17 @@ import com.khominhvi.moneyjar.reports.CategoryTotal;
 public class ReportsDao {
 	
 	private static Logger logger = Logger.getLogger(ReportsDao.class);
+	private SessionFactory sessionFactory;
+	
+	public ReportsDao(SessionFactory sessionFactory){
+		this.sessionFactory = sessionFactory;
+	}
 
 	@SuppressWarnings("rawtypes")
 	public List<CategoryTotal> getCategoryTotals() {
 		// TODO Add date range for category totals
 		logger.debug("Get category totals called.");
 		
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 

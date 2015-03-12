@@ -31,13 +31,7 @@
     	</property>
     </bean>
     
-    <!-- Define datasource for heroku postgres -->
-        <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
-        	<property name="driverClassName" value="${database.driverClassName}"/>
-			<property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}"/>
-			<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
-			<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
-		</bean>
+
       
 	<!-- Declare Domain Beans -->
 	<bean id="category" class="com.khominhvi.moneyjar.transaction.Category" />
@@ -60,8 +54,16 @@
     
     <!-- Create environment variable for heroku postgres url -->
     <bean class="java.net.URI" id="dbUrl">
-        <constructor-arg value="${DATABASE_URL}"/>
+        <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
     </bean>
+    
+	<!-- Define datasource for heroku postgres -->
+	<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}"/>
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+	</bean>
     
     <!-- Declare Controller Beans -->
      

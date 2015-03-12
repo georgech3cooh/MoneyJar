@@ -32,9 +32,13 @@
     </bean>
       
 	<!-- Declare Domain Beans -->
+	<bean id="category" class="com.khominhvi.moneyjar.transaction.Category" />
+	
     <bean id="transaction" class="com.khominhvi.moneyjar.transaction.Transaction" />
      
-    <bean id="transactionDao" class="com.khominhvi.moneyjar.statement.TransactionDao" />
+    <bean id="transactionDao" class="com.khominhvi.moneyjar.hibernate.TransactionDao" />
+    <bean id="categoryDao" class="com.khominhvi.moneyjar.hibernate.CategoryDao" />
+    <bean id="reportsDao" class="com.khominhvi.moneyjar.hibernate.ReportsDao" />
      
     <bean id="statementImporter" class="com.khominhvi.moneyjar.statement.StatementImporter">
         <property name="transactionDao" ref="transactionDao" />

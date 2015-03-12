@@ -11,7 +11,15 @@
    						   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     
-    <context:annotation-config />
+    
+        <!-- Map resource requests to correct directory -->
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+     
+    <!-- Enable Spring MVC Configuration Using Annotations and Content Negotiation-->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+
     <!-- Enable Spring Beans Auto-discovery -->
     <context:component-scan base-package="com.khominhvi.moneyjar" />
    
@@ -85,13 +93,6 @@
     
     
     <!-- Declare Controller Beans -->
-     
-    <!-- Map resource requests to correct directory -->
-    <mvc:resources mapping="/css/**" location="/css/" />
-    <mvc:resources mapping="/js/**" location="/js/" />
-     
-    <!-- Enable Spring MVC Configuration Using Annotations and Content Negotiation-->
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
     
     <!-- Enable File Uploading - By Specifying Multipart Resolver -->
      <bean id="multipartResolver"

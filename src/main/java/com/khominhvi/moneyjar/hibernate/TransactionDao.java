@@ -59,7 +59,6 @@ public class TransactionDao {
 				+ toDate + "'");
 
 		List<Transaction> transactions = new ArrayList<>();
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;
 		Query query = null;
@@ -96,7 +95,6 @@ public class TransactionDao {
 		
 		logger.debug("Querying database with: " + updateString );
 		
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;
 		int result = 0;

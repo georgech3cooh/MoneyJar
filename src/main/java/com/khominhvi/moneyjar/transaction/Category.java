@@ -2,6 +2,7 @@ package com.khominhvi.moneyjar.transaction;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.Immutable;
@@ -17,7 +18,7 @@ public class Category {
 	public Category() {}
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}

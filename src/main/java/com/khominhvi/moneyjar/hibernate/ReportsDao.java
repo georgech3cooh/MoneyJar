@@ -25,10 +25,12 @@ public class ReportsDao {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
+
 		String queryString = "SELECT new com.khominhvi.moneyjar.reports.CategoryTotal(c.name, c.color, SUM(t.amount)) "
 								+ "FROM Transaction t, Category c "
 								+ "WHERE t.category.id = c.id "
-								+ "GROUP BY c.name"; 
+								+ "GROUP BY c.name, c.color"; 
+								
 		List<CategoryTotal> categoryTotals = new ArrayList<>();
 		
 		try {
@@ -36,7 +38,7 @@ public class ReportsDao {
             Query query = session.createQuery(queryString);
             List results = query.list();
             logger.debug("Database results retrieved: " + results.size());
-            
+            logger.debug(results);
             for (Iterator itr = results.iterator(); itr.hasNext();){
             	categoryTotals.add((CategoryTotal) itr.next());
             }

@@ -16,12 +16,15 @@ import com.khominhvi.moneyjar.transaction.Category;
 public class CategoryDao {
 	
 	private static Logger logger = Logger.getLogger(CategoryDao.class);
+	private SessionFactory sessionFactory;
+	
+	public CategoryDao(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@SuppressWarnings("rawtypes")
 	public List<Category> getCategories() {
 		
-
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		
 		Transaction tx = null;

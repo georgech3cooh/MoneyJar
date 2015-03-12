@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class CategoryTotal {
 	private String name;
 	private BigDecimal total;

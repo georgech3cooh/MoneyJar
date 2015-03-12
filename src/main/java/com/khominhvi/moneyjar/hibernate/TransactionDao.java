@@ -17,12 +17,16 @@ import com.khominhvi.moneyjar.transaction.Transaction;
 public class TransactionDao {
 
 	private Logger logger = Logger.getLogger(TransactionDao.class);
+	private SessionFactory sessionFactory;
+	
+	public TransactionDao(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	public void create(List<Transaction> transactions) {
 
 		logger.debug(">> create()");
 
-		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = null;
 

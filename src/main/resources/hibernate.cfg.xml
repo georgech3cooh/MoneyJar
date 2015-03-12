@@ -7,11 +7,16 @@
    
    <!-- Configure database -->
    <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+   
+   <!-- Replaced by Spring Configuration Bean -->
+   <!--
    <property name="connection.driver_class">org.postgresql.Driver</property>
    <property name="connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
    <property name="connection.username">moneyjar</property>
    <property name="connection.password">moneyjar</property>
+   -->
    
+   <!-- Hibernate Options -->
    <property name="hbm2ddl.auto">create-drop</property>
    <property name="show_sql">true</property>
    <property name="format_sql">true</property>
@@ -22,5 +27,6 @@
    <!-- List of XML mapping files -->
    <mapping class="com.khominhvi.moneyjar.transaction.Transaction"/>
    <mapping class="com.khominhvi.moneyjar.transaction.Category" />
+   
 </session-factory>
 </hibernate-configuration>

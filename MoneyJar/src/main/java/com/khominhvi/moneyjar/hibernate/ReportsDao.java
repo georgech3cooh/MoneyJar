@@ -25,7 +25,7 @@ public class ReportsDao {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-		String queryString = "SELECT new com.moneyjar.reports.CategoryTotal(c.name, c.color, SUM(t.amount)) "
+		String queryString = "SELECT new com.khominhvi.moneyjar.reports.CategoryTotal(c.name, c.color, SUM(t.amount)) "
 								+ "FROM Transaction t, Category c "
 								+ "WHERE t.category.id = c.id "
 								+ "GROUP BY c.name"; 

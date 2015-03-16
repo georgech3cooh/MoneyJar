@@ -55,7 +55,7 @@
 							<td class="cat-col">${transaction.getCategory().getName()}</td>
 							<td class="amnt-col">${transaction.getAmount()}</td>
 							<td class="edit-col"><input type="button"
-								id="${transaction.getId()}" value="Edit"></td>
+								id="${transaction.getId()}" value="Edit" disabled></td>
 						</tr>
 					</c:forEach>
 					</tbody>
